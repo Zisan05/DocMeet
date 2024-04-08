@@ -48,7 +48,8 @@ const Login = () => {
       .then(data => {
           console.log(data)
    
-          localStorage.setItem('token', data.access);
+          localStorage.setItem('Access token', data.access);
+          localStorage.setItem('Refresh token', data.refresh);
 
     if(data.detail === "No active account found with the given credentials"){
 

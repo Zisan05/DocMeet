@@ -5,7 +5,7 @@ import {  useEffect, useState } from "react";
 
 const Navbar = () => {
 
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem('Access token');
 
   
 
@@ -35,11 +35,11 @@ useEffect(() => {
 } ,[setUserData])
   
 
-console.log(userData);
+
 
 const {first_name,profile_picture} = userData;
 
-console.log(first_name,profile_picture);
+
 
 
 
@@ -68,7 +68,7 @@ console.log(first_name,profile_picture);
            userData.length === 0 ? <Link to={'/login'}><li><a className="bg-red-400 p-[15px] font-semibold text-[20px] w-[80px]">Login</a></li></Link> : <div className="flex items-center gap-[5px]">
          <h1 className="text-[23px] text-slate-600 font-bold">Hi!  <span className="text-red-400">{first_name}</span></h1>
          
-          <img className="h-[45px] w-[45px] rounded-[50%]" alt="photo upload soon" src={`https://pmshosen.pythonanywhere.com/${profile_picture}`}/>
+          <Link to={"/profile"}><img  className="h-[45px] w-[45px] rounded-[50%]" alt="photo upload soon" src={`https://pmshosen.pythonanywhere.com/${profile_picture}`}/></Link>
            </div>
            
           }

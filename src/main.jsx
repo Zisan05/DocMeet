@@ -10,6 +10,7 @@ import Root from './Components/Root/Root';
 import Home from './Components/Home/Home';
 import Login from './Components/Login/Login';
 import Signup from './Components/Signup/Signup';
+import UpdateProfile from './Components/UpdateProfile/UpdateProfile';
 
 
 
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
     path: "/login",
     element:<Login></Login>
   },
+  {
+    path: '/profile',
+    element:<UpdateProfile></UpdateProfile>
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
