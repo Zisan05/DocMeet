@@ -9,7 +9,7 @@ const Navbar = () => {
 
   
 
-  const [userData,setUserData] = useState([])
+  const [userData,setUserData] = useState('undefined')
 
 
 
@@ -30,14 +30,26 @@ useEffect(() => {
 .then(res => res.json())
 .then(data => {
 
-  setUserData(data);
+  if(data.code === "token_not_valid"){
+    setUserData("undefined");
+  }
+ else{
+  setUserData(data)
+ }
+ 
+  
 })
 } ,[setUserData])
   
 
+console.log(userData);
 
 
-const {first_name,profile_picture} = userData;
+
+
+const {first_name,picture} = userData;
+
+console.log(picture);
 
 
 
@@ -56,8 +68,8 @@ const {first_name,profile_picture} = userData;
         </label>
       </div> 
       <div className="flex-1 px-2 mx-2">
-      <img className="h-[70px] w-[70px] rounded-[50%]" src="https://i.ibb.co/rxp82yD/dr-img-desktop.jpg" alt="" />
-      <h1 className="text-[35px] text-red-400 font-bold">Doc<span className="text-slate-600">Meet</span></h1>
+      <Link to={'/'}><img className="h-[70px] w-[70px] rounded-[50%]" src="https://i.ibb.co/rxp82yD/dr-img-desktop.jpg" alt="" /></Link>
+      <Link to={'/'}><h1 className="text-[35px] text-red-400 font-bold">Doc<span className="text-slate-600">Meet</span></h1></Link>
       </div>
       <div className="flex-none hidden lg:block">
         <ul className="menu menu-horizontal">
@@ -65,10 +77,15 @@ const {first_name,profile_picture} = userData;
           
 
           {
-           userData.length === 0 ? <Link to={'/login'}><li><a className="bg-red-400 p-[15px] font-semibold text-[20px] w-[80px]">Login</a></li></Link> : <div className="flex items-center gap-[5px]">
+           userData === "undefined" ? <Link to={'/login'}> <button className="bg-red-400 p-[15px] font-semibold text-[20px] w-[80px] rounded-[5px] hover:bg-slate-300">login</button> </Link> : <div className="flex items-center gap-[5px]">
          <h1 className="text-[23px] text-slate-600 font-bold">Hi!  <span className="text-red-400">{first_name}</span></h1>
          
-          <Link to={"/profile"}><img  className="h-[45px] w-[45px] rounded-[50%]" alt="photo upload soon" src={`https://pmshosen.pythonanywhere.com/${profile_picture}`}/></Link>
+          <Link to={"/profile"}>
+            {
+              picture === undefined ? <img  className="h-[45px] w-[45px] rounded-[50%]" alt="photo upload soon" src="https://i.ibb.co/SfV3bN3/abstract-user-flat-4.png"/>
+              : <img  className="h-[45px] w-[45px] rounded-[50%]" alt="photo upload soon" src={`https://pmshosen.pythonanywhere.com/${picture}`}/>
+            }
+          </Link>
            </div>
            
           }
@@ -86,10 +103,12 @@ const {first_name,profile_picture} = userData;
       
 
       {
-        userData.length === 0 ? <Link to={"/login"}><li><a className="bg-red-400 p-[15px] font-semibold text-[20px] w-[80px]">Login</a></li></Link> : <div className=" mx-auto items-center gap-[5px]">
+        userData === "undefined" ? <Link to={"/login"}><button className="bg-red-400 p-[15px] font-semibold text-[20px] w-[80px] rounded-[5px] hover:bg-slate-300">login</button></Link> : <div className=" mx-auto items-center gap-[5px]">
 
-           
-         <img className="h-[45px] w-[45px] rounded-[50%] mb-[10px] ml-[30px]" alt="photo upload soon" src={`https://pmshosen.pythonanywhere.com/${profile_picture}`}/>
+           {
+            picture === undefined ? <img className="h-[45px] w-[45px] rounded-[50%] mb-[10px] ml-[30px]" alt="photo upload soon" src="https://i.ibb.co/SfV3bN3/abstract-user-flat-4.png"/> : <img className="h-[45px] w-[45px] rounded-[50%] mb-[10px] ml-[30px]" alt="photo upload soon" src={`https://pmshosen.pythonanywhere.com/${picture}`}/>
+           }
+         
 
         <h1 className="text-[23px] text-slate-600 font-bold">Hi!  <span className="text-red-400">{first_name}</span></h1>
 
@@ -103,5 +122,8 @@ const {first_name,profile_picture} = userData;
         </div>
     );
 };
+
+//  className="bg-red-400 p-[15px] font-semibold text-[20px] w-[80px]
+
 
 export default Navbar;

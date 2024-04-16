@@ -23,6 +23,10 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home></Home>
       },
+      {
+        path: '/profile',
+        element:<UpdateProfile></UpdateProfile>
+      }
       
     ]
   },
@@ -34,10 +38,7 @@ const router = createBrowserRouter([
     path: "/login",
     element:<Login></Login>
   },
-  {
-    path: '/profile',
-    element:<UpdateProfile></UpdateProfile>
-  }
+  
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

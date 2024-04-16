@@ -73,7 +73,7 @@ const Rtoken = localStorage.getItem('Refresh token');
 
 //   use the token to get new token
   useEffect( () => {
-    fetch(`https://pmshosen.pythonanywhere.com/api/patient/token/refresh/`,{
+    fetch(`https://pmshosen.pythonanywhere.com/api/patient/login/refresh/`,{
       method:"POST",
       credentials: "include",
       headers: {
@@ -191,7 +191,7 @@ const handleUpdateData = e => {
 
 <input type="file" ref={inputRef} onChange={handleChangeImage}  className="hidden"/> 
                 </div> : <div>
-                <img className="h-[200px] w-[200px] rounded-[50%] mx-auto mt-[50px]" src={`https://pmshosen.pythonanywhere.com/${profile_picture}`} alt="" /><FaCamera className="text-[35px] absolute left-[220px] md:left-[440px] lg:left-[900px] top-[240px] text-red-400 bg-slate-200 w-[50px] h-[50px] p-[10px] rounded-[20px]"   onClick={handleImageClick}></FaCamera> 
+                <img className="h-[200px] w-[200px] rounded-[50%] mx-auto mt-[50px]" src="https://i.ibb.co/SfV3bN3/abstract-user-flat-4.png" alt="" /><FaCamera className="text-[35px] absolute left-[220px] md:left-[440px] lg:left-[890px] top-[350px] text-red-400 bg-slate-200 w-[50px] h-[50px] p-[10px] rounded-[20px]"   onClick={handleImageClick}></FaCamera> 
 
 <input type="file" ref={inputRef} onChange={handleChangeImage}  className="hidden"/> 
                 </div>
@@ -238,13 +238,13 @@ const handleUpdateData = e => {
                     
                     <div>
                     <label className="block text-white">Date of birth</label>
-                        <input  type="text" defaultValue={date_of_birth} name="date_of_birth" className="p-3 block w-full  drop-shadow-lg outline-none" />
+                        <input  type="text" placeholder="Year-Month-Day" defaultValue={date_of_birth} name="date_of_birth" className="p-3 block w-full  drop-shadow-lg outline-none" />
                     </div>
 
 
                 </div>
                 {/* button type will be submit for handling form submission*/}
-                <button className="bg-slate-600 mt-[10px] hover:bg-stone-600 text-white px-[10px] py-[10px] font-semibold">Submit</button>
+                <button className="bg-slate-600 mt-[20px] hover:bg-stone-600 text-white px-[10px] py-[10px] font-semibold ">Update</button>
             </form>
         </div>
 

@@ -20,35 +20,7 @@ const Banner = () => {
        </div>
        <p className="border-b-[3px] mt-[5px] md:w-[400px] ml-[47px] border-b-slate-600"></p>
 
-    {/* information table */}
-    <div className="overflow-x-auto mt-[30px] ">
-  <table className="table">
-    {/* head */}
-    <thead>
-      <tr className="text-[20px]">
-        <th></th>
-        <th>Day</th>
-        <th>Date</th>
-        <th>Start</th>
-        <th>End</th>
-        <th>Availability</th>
-      </tr>
-    </thead>
-    <tbody>
-      {/* row 1 */}
-      <tr className="text-[15px]">
-        <th>1</th>
-        <td>Monday</td>
-        <td>2024-05-11</td>
-        <td>10:00:00</td>
-        <td>18:00:00</td>
-        <td><button className="bg-red-400 text-white font-semibold p-[2px]">avilable</button></td>
-      </tr>
-
-     
-    </tbody>
-  </table>
-</div>
+ 
 
       </div>
 

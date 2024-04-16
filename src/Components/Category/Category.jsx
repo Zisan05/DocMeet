@@ -15,7 +15,7 @@ const Category = () => {
     useEffect(() => {
 
 
-        fetch(`https://pmshosen.pythonanywhere.com/api/specialization/list/`,{
+        fetch(`https://pmshosen.pythonanywhere.com//api/patient/specialization-list/`,{
           method:"GET",
           credentials: "include",
           headers: {
@@ -25,6 +25,8 @@ const Category = () => {
       })
       .then(res => res.json())
       .then(data => {
+
+        console.log(data);
        
         setCategoryData(data)
         
@@ -37,7 +39,7 @@ const Category = () => {
   useEffect(() => {
 
     if(id === 0 ) {
-        fetch(`https://pmshosen.pythonanywhere.com/api/appointment/list/`,{
+        fetch(`https://pmshosen.pythonanywhere.com/api/patient/appointment-list/`,{
           method:"GET",
           credentials: "include",
           headers: {
@@ -54,7 +56,7 @@ const Category = () => {
     }
 
    if(id >= 1) {
-        fetch(`https://pmshosen.pythonanywhere.com/api/appointment/list/?specialized_id=${id}`,{
+        fetch(`https://pmshosen.pythonanywhere.com/api/patient/appointment-list/?id=${id}`,{
             method:"GET",
             credentials: "include",
             headers: {
