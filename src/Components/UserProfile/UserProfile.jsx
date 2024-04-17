@@ -50,7 +50,7 @@ const UserProfile = () => {
     // use the new token to get the user info
     
     useEffect( () => {
-        fetch(`http://pmshosen.pythonanywhere.com/api/patient/profile/`,{
+        fetch(`https://pmshosen.pythonanywhere.com/api/patient/profile/`,{
           method:"GET",
           credentials: "include",
           headers: {

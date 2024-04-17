@@ -26,7 +26,6 @@ const Category = () => {
       .then(res => res.json())
       .then(data => {
 
-        console.log(data);
        
         setCategoryData(data)
         
@@ -67,7 +66,7 @@ const Category = () => {
         .then(res => res.json())
         .then(data => {
 
-            console.log(data);
+            
          
           setDocData(data)
           
@@ -77,7 +76,45 @@ const Category = () => {
   },[setDocData,id])
 
 
-  console.log(docData);
+  // Doc personal info
+
+  const [DocPersonalInfo,setDocPersonalInfo] = useState({})
+
+const handleDocPersonalInfo = (_id) => {
+
+  console.log(_id);
+
+
+
+  fetch(`https://pmshosen.pythonanywhere.com/api/doctor/detail/?id=${_id}`,{
+    method:"GET",
+    credentials: "include",
+    headers: {
+        "content-type":"application/json",
+    },
+    
+})
+.then(res => res.json())
+.then(data => {
+
+console.log(data);
+
+setDocPersonalInfo(data);
+  
+})
+
+
+
+} 
+
+console.log(DocPersonalInfo);
+
+
+const{email,image,name,qualification,specialization} = DocPersonalInfo;
+
+console.log(email,image,name,qualification,specialization);
+
+
 
     return (
         <div className="w-[95%] container mx-auto ">
@@ -94,7 +131,7 @@ const Category = () => {
             {
                 docData.map(data => <div>
                    <div className="card card-side bg-base-300 shadow-xl  w-[310px] h-[270px] md:w-[350px] lg:w-[380px] pl-[10px] items-center">
-  <figure><img onClick={()=>document.getElementById('my_modal_1').showModal()} className="h-[150px] w-[150px] rounded-[10px]" src={data.doctor_detail.picture} alt=""/></figure>
+  <figure  onClick={() => handleDocPersonalInfo(data.id)}><img onClick={()=>document.getElementById('my_modal_1').showModal()} className="h-[150px] w-[150px] rounded-[10px]" src={data.doctor_detail.picture} alt=""/></figure>
 
 {/* modal */}
 
