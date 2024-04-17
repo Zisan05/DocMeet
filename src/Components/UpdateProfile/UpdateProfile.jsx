@@ -10,7 +10,7 @@ const imageHost = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 
 
 
-const imgApi = `https://api.imgbb.com/1/upload?key=${imageHost}`;
+const imgApi = `https://api.imgbb.com/1/upload?key=96b7b85bb1dcb7f6334d65eb9802db5b`;
 
 const UpdateProfile = () => {
 
