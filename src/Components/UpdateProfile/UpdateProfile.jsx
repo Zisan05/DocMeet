@@ -176,7 +176,7 @@ const handleUpdateData = e => {
         
         const Authentication = newtok; // Assuming newtok holds the authentication token
         
-        fetch('http://pmshosen.pythonanywhere.com/api/patient/profile/update/', {
+        fetch('https://pmshosen.pythonanywhere.com/api/patient/profile/update/', {
             method: "PATCH",
             credentials: "include",
             headers: {
