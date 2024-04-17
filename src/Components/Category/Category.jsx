@@ -84,7 +84,7 @@ const Category = () => {
             <div className="flex flex-wrap justify-around mt-[50px] ">
            {
             CategoryData.map(data => <div onClick={() => setId(data.id)}>
-                <img className="h-[80px] w-[80px] rounded-[50%]  hover:bg-red-400 " src={`https://pmshosen.pythonanywhere.com/${data.image}`} alt="" />
+                <img className="h-[120px] w-[120px] rounded-[50%] p-[5px]   hover:bg-red-400 " src={data.picture} alt="" />
                 <h1 className="text-[20px] font-bold text-slate-600 ml-[25px]">{data.specialized_name}</h1>
             </div>)
            }
@@ -94,9 +94,33 @@ const Category = () => {
             {
                 docData.map(data => <div>
                    <div className="card card-side bg-base-300 shadow-xl  w-[310px] h-[270px] md:w-[350px] lg:w-[380px] pl-[10px] items-center">
-  <figure><img className="h-[150px] w-[150px] rounded-[10px]" src="https://i.ibb.co/NWB2d8v/download.jpg" alt=""/></figure>
+  <figure><img onClick={()=>document.getElementById('my_modal_1').showModal()} className="h-[150px] w-[150px] rounded-[10px]" src={data.doctor_detail.picture} alt=""/></figure>
+
+{/* modal */}
+
+<dialog id="my_modal_1" className="modal">
+  <div className="modal-box bg-gray-300">
+    <div className="flex items-center gap-[20px]">
+    <img className="w-[100px] h-[150px] rounded-[5px]" src={data.doctor_detail.picture} alt="" />
+    <div>
+      <h1 className="text-[20px] font-bold text-slate-600">Name: <span className="text-red-400">{data.doctor_detail.first_name} {data.doctor_detail.last_name}</span></h1>
+      <h1 className="text-[20px] font-bold text-slate-600 mt-[15px]">Gender: <span className="text-red-400">{data.doctor_detail.gender}</span></h1>
+      <h1 className="text-[20px] font-bold text-slate-600 mt-[15px]">Qualification: <span className="text-red-400">{data.doctor_detail.qualification}</span></h1>
+    </div>
+    </div>
+    <div className="modal-action">
+      <form method="dialog">
+        {/* if there is a button in form, it will close the modal */}
+        <button className="btn hover:bg-red-400">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
+ 
+
+
   <div className="card-body">
-  <h1 className="text-[18px] text-red-400 font-semibold"><span className="text-slate-600 font-bold">Dr: </span> {data.doctor_detail.first_name}</h1>
+  <h1 className="text-[18px] text-red-400 font-semibold"><span className="text-slate-600 font-bold">Dr: </span> {data.doctor_detail.first_name} {data.doctor_detail.last_name}</h1>
 
   <h1 className="text-[15px] text-red-400 font-semibold"><span className="text-slate-600 font-bold">Date :</span> {data.date}</h1>
 

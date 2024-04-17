@@ -11,6 +11,7 @@ import Home from './Components/Home/Home';
 import Login from './Components/Login/Login';
 import Signup from './Components/Signup/Signup';
 import UpdateProfile from './Components/UpdateProfile/UpdateProfile';
+import UserProfile from './Components/UserProfile/UserProfile';
 
 
 
@@ -24,9 +25,13 @@ const router = createBrowserRouter([
         element: <Home></Home>
       },
       {
-        path: '/profile',
+        path: '/update',
         element:<UpdateProfile></UpdateProfile>
-      }
+      },
+      {
+        path: '/profile',
+        element: <UserProfile></UserProfile> 
+     }
       
     ]
   },

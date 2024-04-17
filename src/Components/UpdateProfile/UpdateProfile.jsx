@@ -1,14 +1,27 @@
 import { useEffect, useRef, useState } from "react";
 
 import { FaCamera } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+
+
+import Swal from "sweetalert2";
 
 const imageHost = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+
+
 
 const imgApi = `https://api.imgbb.com/1/upload?key=${imageHost}`;
 
 const UpdateProfile = () => {
+
+    
+    const navigate = useNavigate();
+   
+
 // change img
     const inputRef = useRef(null);
+
+    
 
     const [image,setImage] = useState('');
 
@@ -38,8 +51,7 @@ fetch(imgApi,{
 .then(res => res.json())
 .then(data => {
     // get the url that come from img BB 
-    console.log(data);
-
+ 
     // save the url in a state
     setSendPhoto(data.data.url);
 
@@ -63,7 +75,7 @@ const Rtoken = localStorage.getItem('Refresh token');
 
   const token = {Access : Atoken,refresh : Rtoken};
 
-  console.log(token.Access);
+
  
 
   const [userData,setUserData] = useState([])
@@ -86,22 +98,24 @@ const Rtoken = localStorage.getItem('Refresh token');
   .then(res => res.json())
   .then(data => {
 
-  console.log(data);
+ 
 
     setNewtok(data.access);
 
-    console.log(newtok);
+ 
   
 
   })
   },[setNewtok]);
+
+  console.log(newtok);
 
 
 
 // use the new token to get the user info
 
 useEffect( () => {
-    fetch(`http://pmshosen.pythonanywhere.com/api/patient/profile/`,{
+    fetch(`https://pmshosen.pythonanywhere.com/api/patient/profile/`,{
       method:"GET",
       credentials: "include",
       headers: {
@@ -114,18 +128,25 @@ useEffect( () => {
   .then(res => res.json())
   .then(data => {
     
-    console.log(data);
+   console.log(data);
+
+  setSendPhoto(data.picture);
+
   setUserData(data);
 
   })
-  },[newtok,setUserData]);
+  },[newtok,setUserData,setSendPhoto]);
+
+  console.log(sendPhoto);
 
 
-const {blood_group,date_of_birth,email,first_name,gender,id,last_name,profile_picture} = userData;
+const {blood_group,date_of_birth,email,first_name,gender,id,last_name,picture,marital_status,occupation,phone_number,nationality,religion,emergency_contact} = userData;
 
 
 
 // Update the user info
+
+
 
 const handleUpdateData = e => {
     e.preventDefault();
@@ -134,13 +155,22 @@ const handleUpdateData = e => {
         const last_name = e.target.last_name.value;
         const gender = e.target.gender.value;
         const blood_group = e.target.blood_group.value;
-        const date_of_birth = e.target.date_of_birth.value;
+        const phone_number = e.target.phone_number.value;
+        const marital_status = e.target.marital_status.value;
+        const occupation = e.target.occupation.value;
+        const nationality = e.target.nationality.value;
+        const religion = e.target.religion.value;
+        const emergency_contact = e.target.emergency_contact.value;
+
+       
     
         const updatedInfo = { 
      
-            first_name,email,last_name,gender,blood_group,date_of_birth, picture : sendPhoto
+            first_name,email,last_name,gender,blood_group,date_of_birth, picture : sendPhoto,phone_number,marital_status,occupation,nationality,religion,emergency_contact
             
         };
+
+        
         
         console.log(updatedInfo);
         
@@ -163,6 +193,17 @@ const handleUpdateData = e => {
         })
         .then(data => {
             console.log(data);
+         
+            if(data.message === "successfully update your profile"){
+                Swal.fire({
+                    title: "Successfully SignUp",
+                    text: "Your Account is created in DocMeet",
+                    icon: "success",
+                    
+                  });
+                  navigate(location?.state ? location.state : "/profile");
+            }
+
         })
         .catch(error => {
             console.error('There was a problem with the fetch operation:', error);
@@ -191,7 +232,7 @@ const handleUpdateData = e => {
 
 <input type="file" ref={inputRef} onChange={handleChangeImage}  className="hidden"/> 
                 </div> : <div>
-                <img className="h-[200px] w-[200px] rounded-[50%] mx-auto mt-[50px]" src="https://i.ibb.co/SfV3bN3/abstract-user-flat-4.png" alt="" /><FaCamera className="text-[35px] absolute left-[220px] md:left-[440px] lg:left-[890px] top-[350px] text-red-400 bg-slate-200 w-[50px] h-[50px] p-[10px] rounded-[20px]"   onClick={handleImageClick}></FaCamera> 
+                <img className="h-[200px] w-[200px] rounded-[50%] mx-auto mt-[50px]" src={picture} alt="" /><FaCamera className="text-[35px] absolute left-[220px] md:left-[440px] lg:left-[890px] top-[350px] text-red-400 bg-slate-200 w-[50px] h-[50px] p-[10px] rounded-[20px]"   onClick={handleImageClick}></FaCamera> 
 
 <input type="file" ref={inputRef} onChange={handleChangeImage}  className="hidden"/> 
                 </div>
@@ -227,7 +268,7 @@ const handleUpdateData = e => {
                     <div className="flex flex-col  md:flex-row gap-[20px]">
                     <div>
                     <label className="block text-white">Gender</label>
-                        <input type="text" defaultValue={gender} name="gender" placeholder="MALE | FEMALE" className="p-3 block w-[200px]  drop-shadow-lg outline-none" />
+                        <input type="text" defaultValue={gender} name="gender" placeholder="MALE | FEMALE | OTHER" className="p-3 block w-[200px]  drop-shadow-lg outline-none" />
                     </div>
                     
                     <div>
@@ -239,6 +280,40 @@ const handleUpdateData = e => {
                     <div>
                     <label className="block text-white">Date of birth</label>
                         <input  type="text" placeholder="Year-Month-Day" defaultValue={date_of_birth} name="date_of_birth" className="p-3 block w-full  drop-shadow-lg outline-none" />
+                    </div>
+
+                    <div className="flex flex-col  md:flex-row lg:flex-row gap-[20px]">
+                    <div>
+                    <label className="block text-white">Marital Status</label>
+                        <input type="text" defaultValue={marital_status} name="marital_status" placeholder="MARRIED | UNMARRIED" className="p-3 block w-[200px]  drop-shadow-lg outline-none" />
+                    </div>
+                    
+                    <div >
+                    <label className="block text-white">Occupation</label>
+                        <input  type="text" defaultValue={occupation} name="occupation" placeholder="Occupation" className="p-3 block w-[200px]  drop-shadow-lg outline-none" />
+                    </div>
+                    </div>
+
+                    <div>
+                    <label className="block text-white">Phone Number</label>
+                        <input  type="text" placeholder="+880" defaultValue={phone_number} name="phone_number" className="p-3 block w-full  drop-shadow-lg outline-none" />
+                    </div>
+
+                    <div className="flex flex-col  md:flex-row gap-[20px]">
+                    <div>
+                    <label className="block text-white">Religion</label>
+                        <input type="text" defaultValue={religion} name="religion" placeholder="religion" className="p-3 block w-[200px]  drop-shadow-lg outline-none" />
+                    </div>
+                    
+                    <div>
+                    <label className="block text-white">Nationality</label>
+                        <input  type="text" defaultValue={nationality} name="nationality" placeholder="nationality" className="p-3 block w-[200px]  drop-shadow-lg outline-none" />
+                    </div>
+                    </div>
+
+                    <div>
+                    <label className="block text-white">Emergency Contact</label>
+                        <input  type="text" placeholder="+880" defaultValue={emergency_contact} name="emergency_contact" className="p-3 block w-full  drop-shadow-lg outline-none" />
                     </div>
 
 
