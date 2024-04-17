@@ -12,7 +12,7 @@ const Navbar = () => {
   const [userData,setUserData] = useState('undefined')
 
 
-
+ 
 
 
 useEffect(() => {
@@ -30,12 +30,9 @@ useEffect(() => {
 .then(res => res.json())
 .then(data => {
 
-  if(data.code === "token_not_valid"){
-    setUserData("undefined");
-  }
- else{
+
   setUserData(data)
- }
+
  
   
 })
@@ -106,9 +103,9 @@ console.log(picture);
         userData === "undefined" ? <Link to={"/login"}><button className="bg-red-400 p-[15px] font-semibold text-[20px] w-[80px] rounded-[5px] hover:bg-slate-300">login</button></Link> : <div className=" mx-auto items-center gap-[5px]">
 
            <Link to={'profile'}>
-           {
-            picture === undefined ? <img className="h-[45px] w-[45px] rounded-[50%] mb-[10px] ml-[30px]" alt="photo upload soon" src="https://i.ibb.co/SfV3bN3/abstract-user-flat-4.png"/> : <img className="h-[45px] w-[45px] rounded-[50%] mb-[10px] ml-[30px]" alt="photo upload soon" src={picture}/>
-           }
+           
+           <img className="h-[45px] w-[45px] rounded-[50%] mb-[10px] ml-[30px]" alt="photo upload soon" src={picture}/>
+           
            </Link>
          
 

@@ -110,7 +110,7 @@ const Signup = () => {
             <div  className="ml-[20px] mt-[20px]">
             <button className="bg-red-400 mt-[20px] py-[8px] text-white font-semibold w-[240px] md:w-[320px] rounded-[5px]">Sign up</button>
             </div>
-            <h1 className="text-center mt-[10px] text-[14px]">Don't have an account? <Link to={"/login"} className="text-red-400">Login</Link></h1>
+            <h1 className="text-center mt-[10px] text-[14px]">If You already have an account please! <Link to={"/login"} className="text-red-400">Login</Link></h1>
         </form>
     </div>
 

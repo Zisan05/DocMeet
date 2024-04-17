@@ -130,7 +130,7 @@ useEffect( () => {
     
    console.log(data);
 
-  setSendPhoto(data.picture);
+  
 
   setUserData(data);
 
@@ -142,7 +142,9 @@ useEffect( () => {
 
 const {blood_group,date_of_birth,email,first_name,gender,id,last_name,picture,marital_status,occupation,phone_number,nationality,religion,emergency_contact} = userData;
 
-
+if(sendPhoto === ""){
+    setSendPhoto(picture);
+  }
 
 // Update the user info
 
@@ -154,6 +156,7 @@ const handleUpdateData = e => {
         const first_name = e.target.first_name.value;
         const last_name = e.target.last_name.value;
         const gender = e.target.gender.value;
+        const date_of_birth = e.target.date_of_birth.value;
         const blood_group = e.target.blood_group.value;
         const phone_number = e.target.phone_number.value;
         const marital_status = e.target.marital_status.value;
@@ -194,19 +197,33 @@ const handleUpdateData = e => {
         .then(data => {
             console.log(data);
          
-            if(data.message === "successfully update your profile"){
+            if(data.message === "successfully update your profile") {
                 Swal.fire({
-                    title: "Successfully SignUp",
-                    text: "Your Account is created in DocMeet",
-                    icon: "success",
+                  text: "Are you sure you want to update your profile! ",
+                  icon: "question",
+                  showCancelButton: true,
+                  confirmButtonColor: "#3085d6",
+                  cancelButtonColor: "#d33",
+                  confirmButtonText: "Yes, Update it!"
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    ""
+                    // Reload the window after the user confirms deletion
+                    navigate(location?.state ? location.state : "/profile");
+                    window.location.reload();
                     
-                  });
-                  navigate(location?.state ? location.state : "/profile");
-            }
+                  }
+                });
+                
+              }
 
         })
         .catch(error => {
-            console.error('There was a problem with the fetch operation:', error);
+            Swal.fire({
+                title: "Error!",
+                text: "please enter the information correctly",
+                icon: "error"
+            })
         });
 
           
