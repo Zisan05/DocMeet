@@ -1,9 +1,14 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 
 
 const UserProfile = () => {
+
+  const {pathname} = useLocation();
+
+    console.log(pathname);
+
 
     const Atoken = localStorage.getItem('Access token');
     const Rtoken = localStorage.getItem('Refresh token');
@@ -72,18 +77,20 @@ const UserProfile = () => {
     
     const {blood_group,date_of_birth,email,first_name,gender,id,last_name,picture,marital_status,nationality,occupation,phone_number,religion,emergency_contact} = userData;
     
-    console.log(blood_group,date_of_birth,email,first_name,gender,id,last_name,picture,marital_status,);
+   
 
     return (
-        <div style={{backgroundImage: "url('https://i.ibb.co/Z6yPw9C/Exemplary-Professional-Expertise.jpg')",backgroundRepeat: 'no-repeat', backgroundSize: 'cover' } } className="px-[15px] md:px-[60px] lg:px-[200px] flex flex-col md:flex-row gap-[50px] py-[50px] ">
-            <div className="bg-slate-300 pb-[20px] w-[280px]">
-            <img className="h-[200px]" src={picture} alt="" />
+        <div className="h-full" style={{backgroundImage: "url('https://i.ibb.co/Z6yPw9C/Exemplary-Professional-Expertise.jpg')",backgroundRepeat: 'no-repeat', backgroundSize: 'cover' } }>
+
+<div  className=" flex flex-col md:flex-row gap-[50px] py-[50px]  mx-[50px] md:mx-[20px] lg:mx-[250px]">
+            <div className="bg-slate-300 pb-[20px] w-[280px] ">
+            <img className="h-[200px] w-[280px]" src={picture} alt="" />
 
             <h1 className="text-[25px] mt-[10px] font-semibold pl-[10px] md:pl-[10px] lg:pl-[30px]">{first_name} {last_name}</h1>
-            <h1 className="text-[20px] mt-[10px] font-semibold pl-[10px] md:pl-[10px] lg:pl-[30px]">Date of birth : <span className="text-red-400">{date_of_birth}</span></h1>
+            <h1 className="text-[20px] mt-[10px] font-semibold pl-[10px] md:pl-[10px] lg:pl-[30px]">Email : <span className="text-red-400">{email}</span></h1>
 
             <p className="border-b-2 border-b-white w-[80%] mx-auto mt-[20px]"></p>
-            <Link to={'/update'}>
+            <Link to={`/update${pathname}/1`}>
             <button className="bg-slate-400 p-[10px] text-white font-semibold hover:bg-red-400  mt-[30px] ml-[30px]">Update</button>
             </Link>
             </div>
@@ -129,6 +136,8 @@ const UserProfile = () => {
              <h1 className="text-[22px] font-semibold ml-[20px] mt-[20px]">Emergency_Contact : <span className="text-red-400 ">{emergency_contact}</span></h1>
             
             </div>
+        </div>
+
         </div>
     );
 };

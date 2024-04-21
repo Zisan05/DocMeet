@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
 import { FaCamera } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 
 import Swal from "sweetalert2";
@@ -13,6 +13,9 @@ const imageHost = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const imgApi = `https://api.imgbb.com/1/upload?key=96b7b85bb1dcb7f6334d65eb9802db5b`;
 
 const UpdateProfile = () => {
+
+
+    
 
     
     const navigate = useNavigate();
@@ -108,7 +111,7 @@ const Rtoken = localStorage.getItem('Refresh token');
   })
   },[setNewtok]);
 
-  console.log(newtok);
+
 
 
 
@@ -128,7 +131,7 @@ useEffect( () => {
   .then(res => res.json())
   .then(data => {
     
-   console.log(data);
+  
 
   
 
@@ -150,6 +153,12 @@ if(sendPhoto === ""){
 
 
 
+const {pathname,_id} = useParams();
+
+console.log(pathname,_id);
+
+
+
 const handleUpdateData = e => {
     e.preventDefault();
         const email = e.target.email.value;
@@ -165,6 +174,8 @@ const handleUpdateData = e => {
         const religion = e.target.religion.value;
         const emergency_contact = e.target.emergency_contact.value;
 
+        
+
        
     
         const updatedInfo = { 
@@ -172,6 +183,12 @@ const handleUpdateData = e => {
             first_name,email,last_name,gender,blood_group,date_of_birth, picture : sendPhoto,phone_number,marital_status,occupation,nationality,religion,emergency_contact
             
         };
+
+        // const date_of_birth = e.target.date_of_birth.value;
+
+        // if (date_of_birth) {
+        //     updatedInfo.date_of_birth = date_of_birth;
+        // }
 
         
         
@@ -189,15 +206,12 @@ const handleUpdateData = e => {
             body: JSON.stringify(updatedInfo), 
         })
         .then(res => {
-            if (!res.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return res.json();
+            res.json();
         })
         .then(data => {
             console.log(data);
          
-            if(data.message === "successfully update your profile") {
+            if(data === undefined) {
                 Swal.fire({
                   text: "Are you sure you want to update your profile! ",
                   icon: "question",
@@ -209,8 +223,12 @@ const handleUpdateData = e => {
                   if (result.isConfirmed) {
                     ""
                     // Reload the window after the user confirms deletion
-                    navigate(location?.state ? location.state : "/profile");
-                    window.location.reload();
+                    
+                    {
+                        pathname === "booking" ? navigate(location?.state ? location.state : `/${pathname}/${_id}`)
+                         : navigate(location?.state ? location.state : `/${pathname}`)
+                    }
+                    // window.location.reload()
                     
                   }
                 });
@@ -218,13 +236,7 @@ const handleUpdateData = e => {
               }
 
         })
-        .catch(error => {
-            Swal.fire({
-                title: "Error!",
-                text: "please enter the information correctly",
-                icon: "error"
-            })
-        });
+       
 
           
 
@@ -295,7 +307,7 @@ const handleUpdateData = e => {
                     </div>
                     
                     <div>
-                    <label className="block text-white">Date of birth</label>
+                    <label className=" text-white">Date of birth</label>
                         <input  type="text" placeholder="Year-Month-Day" defaultValue={date_of_birth} name="date_of_birth" className="p-3 block w-full  drop-shadow-lg outline-none" />
                     </div>
 

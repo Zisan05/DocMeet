@@ -42,6 +42,7 @@ const Signup = () => {
         .then(data => {
             console.log(data)
 
+
             if(data.message === "Completed your registration process!"){
 
               Swal.fire({
@@ -53,7 +54,7 @@ const Signup = () => {
               
               e.target.reset();
 
-              navigate(location?.state ? location.state : "/");
+              navigate(location?.state ? location.state : "/login");
           }
 
       if(data.message === "You have already account at DocMeet"){

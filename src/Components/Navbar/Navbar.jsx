@@ -39,14 +39,14 @@ useEffect(() => {
 } ,[setUserData])
   
 
-console.log(userData);
+
 
 
 
 
 const {first_name,picture} = userData;
 
-console.log(picture);
+
 
 
 
@@ -72,9 +72,9 @@ console.log(picture);
         <ul className="menu menu-horizontal">
           {/* Navbar menu content here */}
           
-
+ 
           {
-           userData === "undefined" ? <Link to={'/login'}> <button className="bg-red-400 p-[15px] font-semibold text-[20px] w-[80px] rounded-[5px] hover:bg-slate-300">login</button> </Link> : <div className="flex items-center gap-[5px]">
+           token === null  ? <Link to={'/login'}> <button className="bg-red-400 p-[15px] font-semibold text-[20px] w-[80px] rounded-[5px] hover:bg-slate-300">login</button> </Link> : <div className="flex items-center gap-[5px]">
          <h1 className="text-[23px] text-slate-600 font-bold">Hi!  <span className="text-red-400">{first_name}</span></h1>
          
           <Link to={"/profile"}>
@@ -103,8 +103,10 @@ console.log(picture);
         userData === "undefined" ? <Link to={"/login"}><button className="bg-red-400 p-[15px] font-semibold text-[20px] w-[80px] rounded-[5px] hover:bg-slate-300">login</button></Link> : <div className=" mx-auto items-center gap-[5px]">
 
            <Link to={'profile'}>
-           
-           <img className="h-[45px] w-[45px] rounded-[50%] mb-[10px] ml-[30px]" alt="photo upload soon" src={picture}/>
+           {
+             picture === undefined ? <img  className="h-[45px] w-[45px] rounded-[50%]" alt="photo upload soon" src="https://i.ibb.co/SfV3bN3/abstract-user-flat-4.png"/> :  <img className="h-[45px] w-[45px] rounded-[50%] mb-[10px] ml-[30px]" alt="photo upload soon" src={picture}/>
+           }
+          
            
            </Link>
          
