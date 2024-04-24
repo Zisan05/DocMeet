@@ -11,7 +11,7 @@ const ApointmentBooking = () => {
    const {pathname} = useLocation()
 
 
-    console.log(pathname);
+ 
 
 
     // User Information
@@ -76,7 +76,7 @@ const ApointmentBooking = () => {
       .then(res => res.json())
       .then(data => {
         
-        console.log(data);
+      
       setUserData(data);
     
       })
@@ -131,8 +131,10 @@ const {doctor_detail,date,day,start_time,end_time} = docInfo;
         <div className="bg-slate-300 pb-[20px] w-[280px]">
         <img className="h-[200px] w-[280px]" src={picture} alt="" />
 
-        <h1 className="text-[25px] mt-[10px] font-semibold pl-[10px] md:pl-[10px] lg:pl-[30px]">{first_name} {last_name}</h1>
-        <h1 className="text-[20px] mt-[10px] font-semibold pl-[10px] md:pl-[10px] lg:pl-[30px]">Email : <span className="text-red-400">{email}</span></h1>
+        <h1 className="text-[35px] 
+        bg-gradient-to-r from-red-400 to-slate-400 text-transparent bg-clip-text 
+        mt-[10px] font-bold pl-[10px] md:pl-[10px] lg:pl-[30px] text-center">{first_name} {last_name}</h1>
+        <h1 className="text-[20px] mt-[10px] font-semibold text-center">Email  <span className="text-red-400  bg-gradient-to-r from-red-400 to-slate-400 text-transparent bg-clip-text">{email}</span></h1>
 
         <p className="border-b-2 border-b-white w-[80%] mx-auto mt-[20px]"></p>
         <Link to={`/update${pathname}`}>
@@ -140,19 +142,19 @@ const {doctor_detail,date,day,start_time,end_time} = docInfo;
         </Link>
         </div>
 
-        <div className=" w-[280px] md:w-[500px] lg:w-[800px] bg-slate-300 pb-[20px] pr-[10px] md:pr-[10px] lg:pr-0">
+        <div className=" w-[320px] md:w-[500px] lg:w-[800px] bg-slate-300 pb-[20px] px-0 md:px-[20px] lg:px-0 ml-[-20px] md:mr-0 lg:mr-0">
             <h1 className="text-[35px] ml-[20px] mt-[20px] text-center underline font-semibold">Apointment Info</h1>
 
 {/* apointment booking info */}
 
-         <div className="border-[2px] border-slate-400 w-[260px] md:w-[350px] lg:w-[750px] mx-auto px-[20px] py-[20px]">
+         <div className="border-[2px] border-slate-400 w-[295px] md:w-[350px] lg:w-[750px] mx-auto px-[20px] py-[20px] ">
 
            <div className="border-[4px] ">
            <h1 className="text-[20px] font-bold border-2  py-[6px] bg-red-400 text-center">Patient Information</h1>
 
            <div className="px-[10px] py-[10px]  mb-[20px]">
             <h1 className="text-[18px] font-semibold">Patient Name : <span className="text-red-400">{first_name} {last_name}</span></h1>
-            <h1 className="text-[18px] font-semibold">Email: <span className="text-red-400">{email}</span></h1>
+            <h1 className="text-[18px] font-semibold ">Email: <span className="text-red-400">{email}</span></h1>
             <h1 className="text-[18px] font-semibold">Phone Number : <span className="text-red-400">{phone_number}</span></h1>
             <h1 className="text-[18px] font-semibold">Blood Group : <span className="text-red-400">{blood_group}</span></h1>
             <h1 className="text-[18px] font-semibold">Date of birth : <span className="text-red-400">{date_of_birth}</span></h1>

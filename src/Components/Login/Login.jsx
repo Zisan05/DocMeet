@@ -28,11 +28,11 @@ const Login = () => {
 
       const handleLogin = e => {
         e.preventDefault();
-        const email = e.target.email.value;
+        
         const phone_number = e.target.number.value;
         const password = e.target.password.value;
     
-        const signInInfo = { phone_number, password,email };
+        const signInInfo = { phone_number, password};
   
         console.log(signInInfo);
 
@@ -93,15 +93,12 @@ const Login = () => {
         <div>
             <div  className="bg-cover bg-center h-[922px]" style={{backgroundImage: "url('https://i.ibb.co/VM2fyfm/stethoscope-doctor-md-medical-health-hospital.jpg')"}}>
 
-            <div className="bg-white w-[315px] md:w-[400px] absolute le md:left-[200px] lg:left-[600px] top-[200px] px-[20px]  rounded-[10px] py-[80px]">
+            <div className="bg-white w-[335px] md:w-[400px] absolute left-[20px] md:left-[200px] lg:left-[600px] top-[200px] px-[20px]  rounded-[10px] py-[80px]">
             <h1 className="text-[28px] text-red-400 font-semibold text-center">Welcome Back! </h1>
            
 
             <form onSubmit={handleLogin}>
-            <div className="ml-[20px] mt-[20px]">
-                <h1 className="text-[14px]">Email</h1>
-                <input type="text" placeholder="Your Email" name="email" className="py-[8px] px-[10px] w-[240px] md:w-[320px] rounded-[5px] bg-[#e6e5e5f5] text-[14px]" />
-                </div>
+          
 
             <div className="ml-[20px] mt-[20px]">
                 <h1 className="text-[14px]">Mobile Number</h1>
@@ -116,9 +113,9 @@ const Login = () => {
 
                 {
                   seen === "text" ?
-                   <span onClick={handletogol}><IoEyeOffOutline className="text-[20px] absolute left-[240px] md:left-[320px] top-[330px]"></IoEyeOffOutline></span>
+                   <span onClick={handletogol}><IoEyeOffOutline className="text-[20px] absolute left-[240px] md:left-[320px] top-[250px]"></IoEyeOffOutline></span>
                   :
-                  <span onClick={handletogol}><IoEyeOutline className="text-[20px] absolute left-[240px] md:left-[320px] top-[330px]"></IoEyeOutline></span>
+                  <span onClick={handletogol}><IoEyeOutline className="text-[20px] absolute left-[240px] md:left-[320px] top-[250px]"></IoEyeOutline></span>
                 }
                 
                 </div>

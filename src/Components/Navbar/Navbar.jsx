@@ -30,7 +30,7 @@ useEffect(() => {
 .then(res => res.json())
 .then(data => {
 
-
+console.log(data);
   setUserData(data)
 
  
@@ -39,15 +39,18 @@ useEffect(() => {
 } ,[setUserData])
   
 
-
-
-
-
-
 const {first_name,picture} = userData;
 
 
+// remove token
 
+const handleRemoveToken = () => {
+  localStorage.removeItem('Refresh token');
+  localStorage.removeItem('Access token');
+
+  location.reload();
+
+} 
 
 
 
@@ -77,12 +80,17 @@ const {first_name,picture} = userData;
            token === null  ? <Link to={'/login'}> <button className="bg-red-400 p-[15px] font-semibold text-[20px] w-[80px] rounded-[5px] hover:bg-slate-300">login</button> </Link> : <div className="flex items-center gap-[5px]">
          <h1 className="text-[23px] text-slate-600 font-bold">Hi!  <span className="text-red-400">{first_name}</span></h1>
          
-          <Link to={"/profile"}>
-            {
-              picture === undefined ? <img  className="h-[45px] w-[45px] rounded-[50%]" alt="photo upload soon" src="https://i.ibb.co/SfV3bN3/abstract-user-flat-4.png"/>
-              : <img  className="h-[45px] w-[45px] rounded-[50%]" alt="photo upload soon" src={picture}/>
-            }
-          </Link>
+          
+
+   <div className="dropdown dropdown-bottom dropdown-end ">
+   <div tabIndex={0} role="button" className=" m-1 "><img  className="h-[45px] w-[45px] rounded-[50%]" alt="photo upload soon" src={picture}/></div>
+   <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-basrounded-box w-52 bg-red-400">
+     <Link to={"/profile"}><li className="hover:bg-slate-200"><a>Profile</a></li></Link>
+     <li onClick={handleRemoveToken} className="hover:bg-slate-200"><a>Logout</a></li>
+  </ul>
+   </div>            
+              
+          
            </div>
            
           }
@@ -100,16 +108,15 @@ const {first_name,picture} = userData;
       
 
       {
-        userData === "undefined" ? <Link to={"/login"}><button className="bg-red-400 p-[15px] font-semibold text-[20px] w-[80px] rounded-[5px] hover:bg-slate-300">login</button></Link> : <div className=" mx-auto items-center gap-[5px]">
+        token === null ? <Link to={"/login"}><button className="bg-red-400 p-[15px] font-semibold text-[20px] w-[80px] rounded-[5px] hover:bg-slate-300">login</button></Link> : <div className=" mx-auto items-center gap-[5px]">
 
-           <Link to={'profile'}>
-           {
-             picture === undefined ? <img  className="h-[45px] w-[45px] rounded-[50%]" alt="photo upload soon" src="https://i.ibb.co/SfV3bN3/abstract-user-flat-4.png"/> :  <img className="h-[45px] w-[45px] rounded-[50%] mb-[10px] ml-[30px]" alt="photo upload soon" src={picture}/>
-           }
-          
-           
-           </Link>
-         
+<div className="dropdown dropdown-bottom dropdown-end ">
+   <div tabIndex={0} role="button" className=" m-1 "><img className="h-[45px] w-[45px] rounded-[50%] mb-[10px] ml-[30px]" alt="photo upload soon" src={picture}/></div>
+   <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-basrounded-box w-52 bg-red-400">
+     <Link to={"/profile"}><li className="hover:bg-slate-200"><a>Profile</a></li></Link>
+     <li onClick={handleRemoveToken} className="hover:bg-slate-200"><a>Logout</a></li>
+  </ul>
+   </div> 
 
         <h1 className="text-[23px] text-slate-600 font-bold">Hi!  <span className="text-red-400">{first_name}</span></h1>
 
@@ -128,3 +135,8 @@ const {first_name,picture} = userData;
 
 
 export default Navbar;
+
+
+
+
+// <img  className="h-[45px] w-[45px] rounded-[50%]" alt="photo upload soon" src="https://i.ibb.co/SfV3bN3/abstract-user-flat-4.png"/> :  <img className="h-[45px] w-[45px] rounded-[50%] mb-[10px] ml-[30px]" alt="photo upload soon" src={picture}/>

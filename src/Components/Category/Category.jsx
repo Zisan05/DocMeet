@@ -27,7 +27,7 @@ const Category = () => {
       .then(res => res.json())
       .then(data => {
 
-       
+      
         setCategoryData(data)
         
       })
@@ -83,7 +83,7 @@ const Category = () => {
 
 const handleDocPersonalInfo = (_id) => {
 
-  console.log(_id);
+
 
 
 
@@ -98,7 +98,7 @@ const handleDocPersonalInfo = (_id) => {
 .then(res => res.json())
 .then(data => {
 
-console.log(data);
+
 
 setDocPersonalInfo(data);
   
@@ -108,12 +108,12 @@ setDocPersonalInfo(data);
 
 } 
 
-console.log(DocPersonalInfo);
+
 
 
 const{email,image,name,qualification,specialization} = DocPersonalInfo;
 
-console.log(email,image,name,qualification,specialization);
+
 
 
 
@@ -123,7 +123,7 @@ console.log(email,image,name,qualification,specialization);
            {
             CategoryData.map(data => <div onClick={() => setId(data.id)}>
                 <img className="h-[120px] w-[120px] rounded-[50%] p-[5px]" src={data.picture} alt="" />
-                <h1 className="text-[20px] font-bold text-slate-600 ml-[25px]">{data.specialized_name}</h1>
+                <h1 className="text-[20px] font-bold text-slate-600 ml-[30px]">{data.name}</h1>
             </div>)
            }
         </div>

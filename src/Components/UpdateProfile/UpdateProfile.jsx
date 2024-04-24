@@ -6,7 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import Swal from "sweetalert2";
 
-const imageHost = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+
 
 
 
@@ -105,9 +105,6 @@ const Rtoken = localStorage.getItem('Refresh token');
 
     setNewtok(data.access);
 
- 
-  
-
   })
   },[setNewtok]);
 
@@ -133,7 +130,7 @@ useEffect( () => {
     
   
 
-  
+ 
 
   setUserData(data);
 
@@ -157,9 +154,14 @@ const {pathname,_id} = useParams();
 
 console.log(pathname,_id);
 
+console.log(newtok);
+
+console.log(token);
 
 
 const handleUpdateData = e => {
+
+
     e.preventDefault();
         const email = e.target.email.value;
         const first_name = e.target.first_name.value;
@@ -184,6 +186,32 @@ const handleUpdateData = e => {
             
         };
 
+
+       
+            fetch(`https://pmshosen.pythonanywhere.com/api/patient/login/refresh/`,{
+              method:"POST",
+              credentials: "include",
+              headers: {
+                  "content-type":"application/json",
+                  
+              },
+              body:  JSON.stringify(token) ,
+              
+          })
+          .then(res => res.json())
+          .then(data => {
+        
+         console.log(data);
+    
+         
+        
+            setNewtok(data.access);
+        
+          })
+
+          console.log(newtok);
+          
+
         // const date_of_birth = e.target.date_of_birth.value;
 
         // if (date_of_birth) {
@@ -201,7 +229,7 @@ const handleUpdateData = e => {
             credentials: "include",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${Authentication}`,
+                "Authorization": `Bearer ${newtok}`,
             },
             body: JSON.stringify(updatedInfo), 
         })
@@ -236,13 +264,8 @@ const handleUpdateData = e => {
               }
 
         })
-       
 
-          
-
-
-}
-
+    }
 
 
     return (
@@ -257,7 +280,16 @@ const handleUpdateData = e => {
 
             {
                 image ? <div>
-                    <img className="h-[200px] w-[200px] rounded-[50%] mx-auto mt-[50px]" src={URL.createObjectURL(image)} alt="" /><FaCamera className="text-[35px] absolute left-[220px] md:left-[440px] lg:left-[900px] top-[240px] text-red-400 bg-slate-200 w-[50px] h-[50px] p-[10px] rounded-[20px]"   onClick={handleImageClick}></FaCamera> 
+                    {
+    sendPhoto === undefined ? (
+        <span className="loading loading-spinner loading-lg relative left-[140px] md:left-[360px] lg:left-[810px] top-[40px] text-red-400"></span>
+    ) : (
+        <div>
+            <img className="h-[200px] w-[200px] rounded-[50%] mx-auto mt-[50px]" src={URL.createObjectURL(image)} alt="" />
+            <FaCamera className="text-[35px] absolute left-[220px] md:left-[440px] lg:left-[900px] top-[240px] text-red-400 bg-slate-200 w-[50px] h-[50px] p-[10px] rounded-[20px]" onClick={handleImageClick} />
+        </div>
+    )
+}
 
 <input type="file" ref={inputRef} onChange={handleChangeImage}  className="hidden"/> 
                 </div> : <div>
@@ -271,7 +303,7 @@ const handleUpdateData = e => {
          </div>
 
 {/* update form */}
-<div className=" w-[300px] md:w-[500px] mx-auto lg:w-[500px] drop-shadow-lg bg-red-400 mt-[30px] ">
+<div className=" w-[300px] md:w-[500px] mx-auto lg:w-[500px] drop-shadow-lg bg-red-400 mt-[50px]">
             <form onSubmit={handleUpdateData} className="p-12">
           <h1 className="backdrop-blur-sm text-4xl pb-8 text-center text-white">Update profile</h1>
                 <div className="space-y-5">
@@ -325,7 +357,7 @@ const handleUpdateData = e => {
 
                     <div>
                     <label className="block text-white">Phone Number</label>
-                        <input  type="text" placeholder="+880" defaultValue={phone_number} name="phone_number" className="p-3 block w-full  drop-shadow-lg outline-none" />
+                        <input  type="text" placeholder="+880" value={phone_number} name="phone_number" className="p-3 block w-full  drop-shadow-lg outline-none" />
                     </div>
 
                     <div className="flex flex-col  md:flex-row gap-[20px]">
