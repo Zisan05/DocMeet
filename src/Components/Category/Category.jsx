@@ -50,6 +50,7 @@ const Category = () => {
       .then(res => res.json())
       .then(data => {
        
+        console.log(data);
         setDocData(data)
         
       })
@@ -131,7 +132,7 @@ const{email,image,name,qualification,specialization} = DocPersonalInfo;
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-[20px] mt-[50px] ">
             {
                 docData.map(data => <div>
-                   <div className="card card-side bg-base-300 shadow-xl  w-full h-[270px] md:w-[350px] lg:w-[380px] pl-[10px] items-center">
+                   <div className="card card-side bg-base-300 shadow-xl  w-full h-[270px] md:w-[350px] lg:w-[380px] pl-[10px] items-center mb-[20px]">
   <figure  onClick={() => handleDocPersonalInfo(data.id)}><img onClick={()=>document.getElementById('my_modal_1').showModal()} className="h-[150px] w-[150px] rounded-[10px]" src={data.doctor_detail.picture} alt=""/></figure>
 
 {/* modal */}

@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 const ApointmentBooking = () => {
@@ -90,12 +91,14 @@ const ApointmentBooking = () => {
 
     const [docInfo,setDocinfo] = useState([]);
 
-    const { id } = useParams();
+    const { _id } = useParams();
+
+    
 
    
 
     useEffect( () => {
-        fetch(`https://pmshosen.pythonanywhere.com/api/patient/appointment-list/?id=${id}`,{
+        fetch(`https://pmshosen.pythonanywhere.com/api/patient/appointment-detail/${_id}/`,{
           method:"GET",
           credentials: "include",
           headers: {
@@ -111,7 +114,7 @@ const ApointmentBooking = () => {
 
        
         
-     data.map(item => setDocinfo(item))  
+      setDocinfo(data)
      
     
       })
@@ -120,9 +123,61 @@ const ApointmentBooking = () => {
 
 
 
-const {doctor_detail,date,day,start_time,end_time} = docInfo;
+const {doctor_detail,date,day,start_time,end_time,id} = docInfo;
 
 
+
+// Post Apointment for book
+
+const handlePostApointment = (id) => {
+
+  fetch(`https://pmshosen.pythonanywhere.com/api/patient/login/refresh/`,{
+          method:"POST",
+          credentials: "include",
+          headers: {
+              "content-type":"application/json",  
+          },
+          body:  JSON.stringify(token) ,
+      })
+      .then(res => res.json())
+      .then(data => {
+        setNewtok(data.access);
+      })
+
+      
+
+      fetch(`https://pmshosen.pythonanywhere.com/api/patient/appointment-book/`,{
+          method:"POST",
+          credentials: "include",
+          headers: {
+              "content-type":"application/json",
+              "Authorization": `Bearer ${newtok}`,
+          },
+          body:  JSON.stringify({id})
+          
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        if(data.message === "Send your appointment request!"){
+          Swal.fire({
+            title: "Successfull",
+            text: "You Apointment request is send successfully",
+            icon: "success",
+            
+          });
+        }
+        if(data.message === "Incompleted request! Please provide valid data"){
+          Swal.fire({
+            title: "Wait!!",
+            text: "You already book a apointment for this doctor",
+            icon: "info",
+            
+          });
+        }
+      })
+
+}
 
     
 
@@ -184,7 +239,7 @@ const {doctor_detail,date,day,start_time,end_time} = docInfo;
            <h1 className="mt-[20px] text-[20px] font-bold">Comment: </h1>
            <input className="w-full py-[10px] mt-[6px] rounded-[3px] px-[5px]" type="text" />
 
-           <button className="bg-slate-400 mt-[20px] py-[5px] px-[6px] text-white font-semibold hover:bg-red-400">Make Apointment</button>
+           <button onClick={() => handlePostApointment(id)} className="bg-slate-400 mt-[20px] py-[5px] px-[6px] text-white font-semibold hover:bg-red-400">Make Apointment</button>
          
          </div>
         

@@ -44,7 +44,7 @@ const UserProfile = () => {
     
         setNewtok(data.access);
     
-       
+       console.log(data.access);
       
     
       })

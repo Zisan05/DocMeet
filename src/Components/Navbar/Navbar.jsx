@@ -103,17 +103,17 @@ const handleRemoveToken = () => {
     <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label> 
     <ul className="menu p-4 w-[200px] md:w-80 min-h-[500px] bg-base-200">
       {/* Sidebar content here */}
-      <h1 className="text-[35px] text-red-400 font-bold mb-[20px] mt-[30px]">Doc<span className="text-slate-600">Meet</span></h1>
-    <p className="border-b-[10px] border-b-red-400 rounded-[5px] mb-[20px] "></p>
+      <Link to={"/"}><h1 className="text-[35px] text-red-400 font-bold mb-[20px] mt-[30px]">Doc<span className="text-slate-600">Meet</span></h1></Link>
+    <Link to={'/'}><p className="border-b-[10px] border-b-red-400 rounded-[5px] mb-[20px] "></p></Link>
       
 
       {
         token === null ? <Link to={"/login"}><button className="bg-red-400 p-[15px] font-semibold text-[20px] w-[80px] rounded-[5px] hover:bg-slate-300">login</button></Link> : <div className=" mx-auto items-center gap-[5px]">
 
-<div className="dropdown dropdown-bottom dropdown-end ">
+<div className="dropdown dropdown-bottom md:dropdown-end ">
    <div tabIndex={0} role="button" className=" m-1 "><img className="h-[45px] w-[45px] rounded-[50%] mb-[10px] ml-[30px]" alt="photo upload soon" src={picture}/></div>
-   <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-basrounded-box w-52 bg-red-400">
-     <Link to={"/profile"}><li className="hover:bg-slate-200"><a>Profile</a></li></Link>
+   <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-basrounded-box w-[140px] md:w-52 bg-red-400">
+     <Link to={"/profile"}><li className="hover:bg-slate-200 "><a>Profile</a></li></Link>
      <li onClick={handleRemoveToken} className="hover:bg-slate-200"><a>Logout</a></li>
   </ul>
    </div> 
