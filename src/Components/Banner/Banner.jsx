@@ -10,8 +10,8 @@ const Banner = () => {
 
     {/* banner text */}
       <div className="md:w-[600px] lg:w-[700px]  md:pl-[100px] lg:pl-[150px] pt-[100px]">
-        <h1 className="text-[45px] font-semibold text-slate-600 ">Make Appointment <br /> Today!</h1>
-        <p className="text-[20px] text-red-400 font-semibold mt-[10px]">This is Doctor's Schedule. Please <Link to={"/login"}><button className="bg-slate-600 px-[5px] py-[4px] rounded-[5px] hover:bg-slate-100">login</button></Link> to make an appointment.</p>
+        <h1 className="text-[45px] font-semibold text-slate-600 ">Easy appointments<br />  and quick consultations!</h1>
+        <p className="text-[20px] text-red-400 font-semibold mt-[20px]">Effortless <span className="text-slate-600">health</span> access and early protection for you and your family members to grow up <span className="text-slate-600">healthy</span>.</p>
 
        {/* date */}
        <div className="flex items-center mt-[20px] gap-[20px]">

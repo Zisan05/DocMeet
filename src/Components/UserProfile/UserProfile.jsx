@@ -55,6 +55,8 @@ const UserProfile = () => {
     // use the new token to get the user info
     
     useEffect( () => {
+
+      console.log(newtok);
         fetch(`https://pmshosen.pythonanywhere.com/api/patient/profile/`,{
           method:"GET",
           credentials: "include",

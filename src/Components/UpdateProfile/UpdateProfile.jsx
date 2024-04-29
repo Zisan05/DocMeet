@@ -128,19 +128,18 @@ useEffect( () => {
   .then(res => res.json())
   .then(data => {
     
-  
-
- 
-
   setUserData(data);
 
   })
   },[newtok,setUserData,setSendPhoto]);
 
-  console.log(sendPhoto);
 
 
-const {blood_group,date_of_birth,email,first_name,gender,id,last_name,picture,marital_status,occupation,phone_number,nationality,religion,emergency_contact} = userData;
+
+const {blood_group,date_of_birth,email,first_name,gender,id,last_name,picture,marital_status,occupation,nationality,religion,emergency_contact} = userData;
+
+
+
 
 if(sendPhoto === ""){
     setSendPhoto(picture);
@@ -152,24 +151,19 @@ if(sendPhoto === ""){
 
 const {pathname,_id} = useParams();
 
-console.log(pathname,_id);
 
-console.log(newtok);
-
-console.log(token);
 
 
 const handleUpdateData = e => {
 
 
     e.preventDefault();
-        const email = e.target.email.value;
+        // const email = e.target.email.value;
         const first_name = e.target.first_name.value;
         const last_name = e.target.last_name.value;
         const gender = e.target.gender.value;
         const date_of_birth = e.target.date_of_birth.value;
         const blood_group = e.target.blood_group.value;
-        const phone_number = e.target.phone_number.value;
         const marital_status = e.target.marital_status.value;
         const occupation = e.target.occupation.value;
         const nationality = e.target.nationality.value;
@@ -182,7 +176,7 @@ const handleUpdateData = e => {
     
         const updatedInfo = { 
      
-            first_name,email,last_name,gender,blood_group,date_of_birth, picture : sendPhoto,phone_number,marital_status,occupation,nationality,religion,emergency_contact
+            first_name,email,last_name,gender,blood_group,date_of_birth, picture : sendPhoto,marital_status,occupation,nationality,religion,emergency_contact
             
         };
 
@@ -201,15 +195,16 @@ const handleUpdateData = e => {
           .then(res => res.json())
           .then(data => {
         
-         console.log(data);
+     
     
          
         
+         
             setNewtok(data.access);
         
           })
 
-          console.log(newtok);
+          
           
 
         // const date_of_birth = e.target.date_of_birth.value;
@@ -224,20 +219,20 @@ const handleUpdateData = e => {
         
         const Authentication = newtok; // Assuming newtok holds the authentication token
         
-        fetch('https://pmshosen.pythonanywhere.com/api/patient/profile/update/', {
+        fetch('https://pmshosen.pythonanywhere.com/api/patient/profile-info-update/', {
             method: "PATCH",
             credentials: "include",
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${newtok}`,
             },
-            body: JSON.stringify(updatedInfo), 
+            body: JSON.stringify(updatedInfo) 
         })
-        .then(res => {
-            res.json();
-        })
+        .then(res => {          
+          res.json();
+          })
         .then(data => {
-            console.log(data);
+            
          
             if(data === undefined) {
                 Swal.fire({
@@ -308,11 +303,11 @@ const handleUpdateData = e => {
           <h1 className="backdrop-blur-sm text-4xl pb-8 text-center text-white">Update profile</h1>
                 <div className="space-y-5">
                     
-                    <div>
+                    {/* <div>
                     <label className="block text-white">Email</label>
-                        <input  type="email" placeholder="Your Email address" name="email" defaultValue={email} className="p-3 block w-full  drop-shadow-lg outline-none" />
+                        <input  type="email" placeholder="Your Email address" name="email" value={email} className="p-3 block w-full  drop-shadow-lg outline-none" />
                         
-                    </div>
+                    </div> */}
                     <div className="flex flex-col  md:flex-row gap-[20px]">
                     
                     <div>
@@ -355,11 +350,7 @@ const handleUpdateData = e => {
                     </div>
                     </div>
 
-                    <div>
-                    <label className="block text-white">Phone Number</label>
-                        <input  type="text" placeholder="+880" value={phone_number} name="phone_number" className="p-3 block w-full  drop-shadow-lg outline-none" />
-                    </div>
-
+                   
                     <div className="flex flex-col  md:flex-row gap-[20px]">
                     <div>
                     <label className="block text-white">Religion</label>

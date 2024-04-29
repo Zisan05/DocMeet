@@ -13,6 +13,7 @@ import Signup from './Components/Signup/Signup';
 import UpdateProfile from './Components/UpdateProfile/UpdateProfile';
 import UserProfile from './Components/UserProfile/UserProfile';
 import ApointmentBooking from './Components/ApointmentBooking/ApointmentBooking';
+import Privat from './Components/Privat/Privat';
 
 
 
@@ -27,27 +28,28 @@ const router = createBrowserRouter([
       },
       {
         path: `/update/:pathname/:_id`,
-        element:<UpdateProfile></UpdateProfile>
+        element:<Privat><UpdateProfile></UpdateProfile></Privat>
       },
       {
         path: '/profile',
-        element: <UserProfile></UserProfile> 
+        element: <Privat><UserProfile></UserProfile> </Privat>
      },
      {
       path: '/booking/:_id',
-      element: <ApointmentBooking></ApointmentBooking>
-     }
+      element: <Privat><ApointmentBooking></ApointmentBooking></Privat>
+     },
+      {
+        path: "/signup",
+        element: <Signup></Signup> 
+      },
+      {
+        path: "/login",
+        element:<Login></Login>
+      },
       
     ]
   },
-  {
-    path: "/signup",
-    element: <Signup></Signup> 
-  },
-  {
-    path: "/login",
-    element:<Login></Login>
-  },
+  
   
 ]);
 
