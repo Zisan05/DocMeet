@@ -28,8 +28,7 @@ const Signup = () => {
   
       const signUpInfo = { phone_number, password,email };
 
-      console.log(signUpInfo);
-
+     
 
       fetch('https://pmshosen.pythonanywhere.com/api/patient/register/',{
             method:"POST",
@@ -40,7 +39,7 @@ const Signup = () => {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data)
+            
 
 
             if(data.message === "Completed your registration process!"){

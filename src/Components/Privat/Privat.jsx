@@ -7,7 +7,7 @@ const Privat = ({children}) => {
     const Atoken = localStorage.getItem('Access token');
     const Rtoken = localStorage.getItem('Refresh token');
 
-    console.log(Atoken);
+  
 
      if(Atoken === null ){
         return <Navigate state={location.pathname} to = {'/login'}></Navigate>;

@@ -44,7 +44,7 @@ const UserProfile = () => {
     
         setNewtok(data.access);
     
-       console.log(data.access);
+  
       
     
       })
@@ -56,7 +56,7 @@ const UserProfile = () => {
     
     useEffect( () => {
 
-      console.log(newtok);
+      
         fetch(`https://pmshosen.pythonanywhere.com/api/patient/profile/`,{
           method:"GET",
           credentials: "include",
@@ -70,7 +70,7 @@ const UserProfile = () => {
       .then(res => res.json())
       .then(data => {
         
-        console.log(data);
+     
       setUserData(data);
     
       })
@@ -79,7 +79,7 @@ const UserProfile = () => {
     
     const {blood_group,date_of_birth,email,first_name,gender,id,last_name,picture,marital_status,nationality,occupation,phone_number,religion,emergency_contact} = userData;
 
-    console.log(userData);
+   
     
    
 

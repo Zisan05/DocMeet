@@ -1,13 +1,13 @@
 
 import { useEffect, useState } from "react";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 
 
 const ApointmentBooking = () => {
 
 
-   
+  const navigate = useNavigate();
 
    const {pathname} = useLocation()
 
@@ -166,6 +166,8 @@ const handlePostApointment = (id) => {
             icon: "success",
             
           });
+
+          navigate(location?.state ? location.state : "/")
         }
         if(data.message === "Incompleted request! Please provide valid data"){
           Swal.fire({

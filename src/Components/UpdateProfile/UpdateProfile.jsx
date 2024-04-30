@@ -66,7 +66,7 @@ setImage(file);
 
 }
 
-console.log(sendPhoto);
+
 
 // get user info
 
@@ -195,11 +195,6 @@ const handleUpdateData = e => {
           .then(res => res.json())
           .then(data => {
         
-     
-    
-         
-        
-         
             setNewtok(data.access);
         
           })

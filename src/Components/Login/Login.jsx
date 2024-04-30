@@ -34,7 +34,7 @@ const Login = () => {
     
         const signInInfo = { phone_number, password};
   
-        console.log(signInInfo);
+       
 
 
         fetch('https://pmshosen.pythonanywhere.com/api/patient/login/',{
@@ -46,7 +46,7 @@ const Login = () => {
       })
       .then(res => res.json())
       .then(data => {
-          console.log(data)
+         
    
           localStorage.setItem('Access token', data.access);
           localStorage.setItem('Refresh token', data.refresh);
@@ -78,6 +78,8 @@ const Login = () => {
       e.target.reset();
 
       navigate(location?.state ? location.state : "/");
+
+      location.reload();
   }
          
       })
