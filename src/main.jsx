@@ -14,6 +14,10 @@ import UpdateProfile from './Components/UpdateProfile/UpdateProfile';
 import UserProfile from './Components/UserProfile/UserProfile';
 import ApointmentBooking from './Components/ApointmentBooking/ApointmentBooking';
 import Privat from './Components/Privat/Privat';
+import Admin from './Components/Admin/Admin';
+
+import AdminLogin from './Components/Admin/Admin Login/AdminLogin';
+import BookingList from './Components/Admin/Booking List/BookingList';
 
 
 
@@ -49,6 +53,20 @@ const router = createBrowserRouter([
       
     ]
   },
+  {
+   path: '/doctor-panel-side',
+   element: <Admin></Admin>,
+   children:[
+    {
+      path : '/doctor-panel-side/bookingList',
+      element: <BookingList></BookingList>
+    }
+   ]
+  },
+  {
+    path : "/doctor-panel-side-access-login",
+    element : <AdminLogin></AdminLogin>
+  }
   
   
 ]);

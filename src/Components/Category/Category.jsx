@@ -129,10 +129,10 @@ const{email,image,name,qualification,specialization} = DocPersonalInfo;
            }
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-[20px] mt-[50px] ">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-3 gap-[20px] mt-[50px] ">
             {
                 docData.map(data => <div>
-                   <div className="card card-side bg-base-300 shadow-xl  w-full h-[270px] md:w-[350px] lg:w-[380px] pl-[10px] items-center mb-[20px]">
+                   <div className="card card-side bg-base-300 shadow-xl  w-full h-[270px]  pl-[10px] items-center mb-[20px]">
   <figure  onClick={() => handleDocPersonalInfo(data.id)}><img onClick={()=>document.getElementById('my_modal_1').showModal()} className="h-[150px] w-[150px] rounded-[10px]" src={data.doctor_detail.picture} alt=""/></figure>
 
 {/* modal */}
@@ -167,7 +167,7 @@ const{email,image,name,qualification,specialization} = DocPersonalInfo;
 
   <h1 className="text-[12px] flex gap-[8px] font-bold mt-[5px]"><span className="text-red-400  text-[22px]"><FaClock></FaClock></span> {data.start_time} - {data.end_time}</h1>
 
-  <Link to={`/booking/${data.id}`}><button className="bg-red-400 text-white font-semibold rounded-[5px]  py-[3px] mt-[10px] px-[1px] hover:bg-slate-600">Book Apoinment</button></Link>
+  <Link to={`/booking/${data.id}`}><button className="bg-red-400 text-white font-semibold rounded-[5px]  py-[3px] mt-[10px] px-[8px] hover:bg-slate-600">Book Apoinment</button></Link>
   
     
     
@@ -187,5 +187,3 @@ export default Category;
 
 
 
-
-// <h1 className="text-[20px] text-red-400"><span className="text-slate-600 font-bold">Dr :</span> {data.first_name} {data.last_name}</h1>
