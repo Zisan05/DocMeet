@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 const BookingList = () => {
@@ -6,6 +8,10 @@ const BookingList = () => {
 const [booklist,setBooklist] = useState([])
 
 const [newtok,setNewtok] = useState('')
+
+const navigate = useNavigate();
+
+// const [confirmtok,setConfirmtok] = useState('')
 
 const Atoken = localStorage.getItem('Doctor Access token');
 const Rtoken = localStorage.getItem('Doctor Refresh token');
@@ -48,9 +54,11 @@ useEffect(() => {
     })
       .then((res) => res.json())
       .then((data) => {
+
+        console.log(data);
         // Ensure data is an array or convert it to an array
         const booklistArray = Array.isArray(data) ? data : [data];
-        console.log(booklistArray); // Verify the structure of the data received
+         // Verify the structure of the data received
         setBooklist(booklistArray);
       })
       .catch((error) => {
@@ -58,7 +66,128 @@ useEffect(() => {
       });
   }, [newtok]);
 
-  console.log(booklist);
+ 
+
+
+
+
+  // Confirm appointment list
+
+  const handleconfirm = (id) => {
+  
+
+//confirm the book list
+
+fetch('https://pmshosen.pythonanywhere.com/api/doctor/book-confirm/', {
+  method: "PATCH",
+  credentials: "include",
+  headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${newtok}`,
+  },
+  body: JSON.stringify({"id":id}) 
+})
+.then(res => {          
+res.json();
+console.log(res);
+})
+.then(data => {
+  
+
+console.log(data);
+
+if(data===undefined) {
+  Swal.fire({
+    title: "Successfull",
+    text: "Your appointment book successfully",
+    icon: "success",
+    
+  });
+
+
+}
+
+// refetch the data 
+
+fetch(`https://pmshosen.pythonanywhere.com/api/doctor/book-list/`, {
+  method: "GET",
+  credentials: "include",
+  headers: {
+    "content-type": "application/json",
+    "Authorization": `Bearer ${newtok}`,
+  },
+})
+  .then((res) => res.json())
+  .then((data) => {
+
+    console.log(data);
+    // Ensure data is an array or convert it to an array
+    const booklistArray = Array.isArray(data) ? data : [data];
+     // Verify the structure of the data received
+    setBooklist(booklistArray);
+  })
+  .catch((error) => {
+    console.error("Error fetching book list:", error);
+  });
+
+
+})
+
+
+  }
+
+// Deleteing the book list
+
+const handleDelete  = (id) => {
+
+
+  fetch(`https://pmshosen.pythonanywhere.com/api/doctor/book-delete/${id}/`,{
+            method:"DELETE",
+            headers: {
+                "content-type":"application/json",
+                "Authorization": `Bearer ${newtok}`
+            },
+  
+        })
+        .then(res => res.json())
+        .then(data => {
+   
+          console.log(data);
+          if(data === "Successful in deleting a book."){
+            Swal.fire({
+              title: "Successfull",
+              text: "Delete Your appointment successfully",
+              icon: "success",
+              
+            });
+
+          }
+
+// refetch the data 
+
+fetch(`https://pmshosen.pythonanywhere.com/api/doctor/book-list/`, {
+  method: "GET",
+  credentials: "include",
+  headers: {
+    "content-type": "application/json",
+    "Authorization": `Bearer ${newtok}`,
+  },
+})
+  .then((res) => res.json())
+  .then((data) => {
+
+    console.log(data);
+    // Ensure data is an array or convert it to an array
+    const booklistArray = Array.isArray(data) ? data : [data];
+     // Verify the structure of the data received
+    setBooklist(booklistArray);
+  })
+  .catch((error) => {
+    console.error("Error fetching book list:", error);
+  });
+
+        })
+}
 
 
   
@@ -67,7 +196,7 @@ useEffect(() => {
         <div>
         <h1 className="text-[40px] font-semibold mt-[30px] text-red-400">DocMeet Booking List</h1>
 
-        <div className="border-2 mt-[20px] w-full ">
+        <div className="border-2 mt-[20px] ">
            <h1 className="text-[25px] bg-red-400 py-[10px] pl-[30px] text-white font-semibold">Booking List</h1>
 
            <div>
@@ -77,15 +206,17 @@ useEffect(() => {
 <thead>
 
 <tr> 
-    <th  className="text-[25px] border-2 text-center">No</th>
-    <th className="text-[25px] border-2 text-center">Patient Name</th>
-    <th className="text-[25px] border-2 text-center">Phone Number</th>
-    <th className="text-[25px] border-2 text-center">Email</th>
-    <th className="text-[25px] border-2 text-center">Day</th>
-    <th className="text-[25px] border-2 text-center">Date</th>
-    <th className="text-[25px] border-2 text-center">Staring Time</th>
-    <th className="text-[25px] border-2 text-center">Ending Time</th>
-    <th className="text-[25px] border-2 text-center">Status</th>
+    <th  className="text-[20px] border-2 text-center">No</th>
+    <th className="text-[20px] border-2 text-center">Patient Name</th>
+    <th className="text-[20px] border-2 text-center">Contact</th>
+    <th className="text-[20px] border-2 text-center">Email</th>
+    <th className="text-[20px] border-2 text-center">Day</th>
+    <th className="text-[20px] border-2 text-center">Date</th>
+    <th className="text-[20px] border-2 text-center">Start</th>
+    <th className="text-[20px] border-2 text-center">End</th>
+    <th className="text-[20px] border-2 text-center">Status</th>
+    <th className="text-[20px] border-2 text-center">Activities</th>
+    <th className="text-[20px] border-2 text-center">Activities</th>
   </tr>
 </thead>
     {
@@ -100,9 +231,12 @@ useEffect(() => {
           <td className="border-2 text-center">{item.date}</td>
           <td className="border-2 text-center">{item.start_time} AM</td>
           <td className="border-2 text-center">{item.end_time} PM</td>
-          {
-            item.is_complete === false ? <td className="border-2 text-center"><button className="bg-slate-600 text-white font-semibold py-[5px] px-[5px] rounded-[3px] hover:bg-red-400">Pending</button></td> : <td className="border-2 text-center"><button className="bg-red-400 text-white font-semibold py-[5px] px-[5px] rounded-[3px] hover:bg-slate-600">Finish</button></td>
-          }
+           {
+            item.is_complete === true ? <td className="border-2 text-center">Finish</td> : <td className="border-2 text-center">Pending</td>
+           }
+           <td className="border-2 text-center"><button onClick={() => handleconfirm(item.id)} className="bg-red-400 text-white font-semibold py-[5px] px-[5px] rounded-[3px] hover:bg-slate-600">Confirm</button></td>
+           <td className="border-2 text-center"><button onClick={() => handleDelete(item.id)} className="bg-slate-600 text-white font-semibold py-[5px] px-[5px] rounded-[3px] hover:bg-red-400">Delete</button></td>
+          
         </tr>
        
       </tbody>)

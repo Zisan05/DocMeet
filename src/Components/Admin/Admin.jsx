@@ -107,7 +107,7 @@ const Admin = () => {
 </div>
 
 {/* changing page div */}
-<div className="md:pl-[20px] md:w-full lg:w-[1200px]">
+<div className="md:pl-[20px] md:w-[600px] lg:w-full ">
 
     <Outlet></Outlet>
 

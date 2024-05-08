@@ -45,40 +45,41 @@ const AdminLogin = () => {
         .then(res => res.json())
         .then(data => {
            
-     console.log(data);
+
             localStorage.setItem('Doctor Access token', data.access);
             localStorage.setItem('Doctor Refresh token', data.refresh);
-  
-      if(data.detail === "No active account found with the given credentials"){
-  
-        Swal.fire({
-          title: "Opps",
-          text: "You have no active account please go to Sign up page ",
-          icon: "question",
-          
-        });
-  
-        e.target.reset();
-  
-      }
-  
-      else {
+
+            if(data.access) {
   
        
   
+              Swal.fire({
+                title: "Successfull",
+                text: "You successully login in DocMeet",
+                icon: "success",
+                
+              });
+              
+              e.target.reset();
+        
+              navigate(location?.state ? location.state : "/doctor-panel-side/bookingList");
+        
+              location.reload();
+          }
+  
+      else {
+  
         Swal.fire({
-          title: "Successfull",
-          text: "You successully login in DocMeet",
-          icon: "success",
+          title: "Opps",
+          text: "Please enter the correct imformation!",
+          icon: "question",
           
         });
-        
+
         e.target.reset();
-  
-        navigate(location?.state ? location.state : "/doctor-panel-side/bookingList");
-  
-        location.reload();
-    }
+      }
+
+      
            
         })
    
@@ -92,9 +93,9 @@ const AdminLogin = () => {
     return (
         <div>
             <div>
-            <div  className="bg-cover bg-center h-[922px]" style={{backgroundImage: "url('https://i.ibb.co/VM2fyfm/stethoscope-doctor-md-medical-health-hospital.jpg')"}}>
+            <div  className="bg-cover bg-center h-[1100px]" style={{backgroundImage: "url('https://i.ibb.co/VM2fyfm/stethoscope-doctor-md-medical-health-hospital.jpg')"}}>
 
-            <div className="bg-white w-[335px] md:w-[400px] absolute left-[20px] md:left-[200px] lg:left-[600px] top-[200px] px-[20px]  rounded-[10px] py-[80px]">
+            <div className="bg-white w-[335px] md:w-[400px] absolute left-[20px] md:left-[200px] lg:left-[750px] top-[200px] px-[20px]  rounded-[10px] py-[80px]">
             <h1 className="text-[28px] text-red-400 font-semibold text-center">Welcome Back! </h1>
            
 

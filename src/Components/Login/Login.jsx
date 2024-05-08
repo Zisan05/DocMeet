@@ -51,22 +51,7 @@ const Login = () => {
           localStorage.setItem('Access token', data.access);
           localStorage.setItem('Refresh token', data.refresh);
 
-    if(data.detail === "No active account found with the given credentials"){
-
-      Swal.fire({
-        title: "Opps",
-        text: "You have no active account please go to Sign up page ",
-        icon: "question",
-        
-      });
-
-      e.target.reset();
-
-    }
-
-    else {
-
-     
+    if(data.access){
 
       Swal.fire({
         title: "Successfull",
@@ -80,6 +65,21 @@ const Login = () => {
       navigate(location?.state ? location.state : "/");
 
       location.reload();
+
+    }
+
+    else {
+
+
+      Swal.fire({
+        title: "Opps",
+        text: "Please Enter the correct imformation!",
+        icon: "question",
+        
+      });
+
+      e.target.reset();
+  
   }
          
       })

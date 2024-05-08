@@ -18,6 +18,7 @@ import Admin from './Components/Admin/Admin';
 
 import AdminLogin from './Components/Admin/Admin Login/AdminLogin';
 import BookingList from './Components/Admin/Booking List/BookingList';
+import AdminPrivat from './Components/Admin/AdminPrivat/AdminPrivat';
 
 
 
@@ -59,7 +60,7 @@ const router = createBrowserRouter([
    children:[
     {
       path : '/doctor-panel-side/bookingList',
-      element: <BookingList></BookingList>
+      element: <AdminPrivat><BookingList></BookingList></AdminPrivat>
     }
    ]
   },
