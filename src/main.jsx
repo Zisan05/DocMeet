@@ -19,6 +19,8 @@ import Admin from './Components/Admin/Admin';
 import AdminLogin from './Components/Admin/Admin Login/AdminLogin';
 import BookingList from './Components/Admin/Booking List/BookingList';
 import AdminPrivat from './Components/Admin/AdminPrivat/AdminPrivat';
+import PatientList from './Components/Admin/PatientList/PatientList';
+import DoctorSchedule from './Components/Admin/DoctorSchedule/DoctorSchedule';
 
 
 
@@ -56,11 +58,19 @@ const router = createBrowserRouter([
   },
   {
    path: '/doctor-panel-side',
-   element: <Admin></Admin>,
+   element: <AdminPrivat><Admin></Admin></AdminPrivat>,
    children:[
     {
       path : '/doctor-panel-side/bookingList',
       element: <AdminPrivat><BookingList></BookingList></AdminPrivat>
+    },
+    {
+      path : "/doctor-panel-side/patientList",
+      element : <AdminPrivat><PatientList></PatientList></AdminPrivat>
+    },
+    {
+      path : "/doctor-panel-side/doctorschedule",
+      element : <AdminPrivat><DoctorSchedule></DoctorSchedule></AdminPrivat>
     }
    ]
   },

@@ -70,21 +70,38 @@ const Admin = () => {
 
       const {email,first_name,last_name} = userData
 
+
+
+      // logout form admin panel
+
+      const hnadleLogout = () => {
+        localStorage.removeItem('Doctor Refresh token');
+        localStorage.removeItem('Doctor Access token');
+      
+        location.reload();
+      }
+
     
 
 
     return (
         <div>
             <div className="flex gap-[10px] items-center bg-slate-200 py-[20px] font-semibold text-slate-600 pl-[20px] text-[19px] md:text-[30px]">
-            <img className="h-[30px] md:h-[50px] w-[30px] md:w-[50px]" src="https://i.ibb.co/rxp82yD/dr-img-desktop.jpg" alt="" />
-             <h1 className=""><span className="text-red-400">Wellcome </span> {first_name} {last_name}</h1>
+           <Link to={"/"}><img className="h-[30px] md:h-[50px] w-[30px] md:w-[50px]" src="https://i.ibb.co/rxp82yD/dr-img-desktop.jpg" alt="" /></Link>
+             <h1 className=""><span className="text-red-400">Wellcome </span> <div class="dropdown ">
+  <div tabindex="0" role="" class=""> {first_name} {last_name}</div>
+  <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow  rounded-box w-52 bg-red-400">
+    <li onClick={hnadleLogout} className=" text-[18px] text-white hover:bg-slate-300 rounded-[10px]"><a>Logout</a></li>
+    
+  </ul>
+</div></h1>
             </div>
 
 {/* main div */}
            <div className="flex flex-col md:flex-row">
 
             {/* side bar div */}
-           <div className="bg-slate-600 w-full md:w-[250px] text-white md:h-[600px] flex flex-col md:flex-col ">
+           <div className="bg-slate-600 w-full md:w-[280px] text-white md:h-[693px] flex flex-col md:flex-col ">
 
 
 <Link to={"/doctor-panel-side/bookingList"}>
@@ -94,15 +111,19 @@ const Admin = () => {
 </div>
 </Link>
   
+<Link to={"/doctor-panel-side/doctorschedule"}>
 <div tabindex="0" className="flex items-center gap-[10px]  focus:bg-red-400 py-[15px] relative md:top-[30px] pl-[20px]">
 <AiOutlineSchedule  className="text-[35px]"></AiOutlineSchedule >
 <h1 className="text-[22px] ">Doctor Schedule</h1>
 </div>
+</Link>
 
+<Link to={"/doctor-panel-side/patientList"}>
 <div tabindex="0" className="flex items-center gap-[10px]  focus:bg-red-400 py-[15px] relative md:top-[30px] pl-[20px]">
 <PiUserListBold   className="text-[35px]"></PiUserListBold >
 <h1 className="text-[22px] ">Patient List</h1>
 </div>
+</Link>
 
 </div>
 

@@ -11,7 +11,6 @@ const [newtok,setNewtok] = useState('')
 
 const navigate = useNavigate();
 
-// const [confirmtok,setConfirmtok] = useState('')
 
 const Atoken = localStorage.getItem('Doctor Access token');
 const Rtoken = localStorage.getItem('Doctor Refresh token');
