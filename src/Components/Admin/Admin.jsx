@@ -3,6 +3,7 @@ import { PiUserListBold } from "react-icons/pi";
 import { AiOutlineSchedule } from "react-icons/ai";
 import { Link, Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { FaCaretDown } from "react-icons/fa6";
 
 const Admin = () => {
 
@@ -89,7 +90,7 @@ const Admin = () => {
             <div className="flex gap-[10px] items-center bg-slate-200 py-[20px] font-semibold text-slate-600 pl-[20px] text-[19px] md:text-[30px]">
            <Link to={"/"}><img className="h-[30px] md:h-[50px] w-[30px] md:w-[50px]" src="https://i.ibb.co/rxp82yD/dr-img-desktop.jpg" alt="" /></Link>
              <h1 className=""><span className="text-red-400">Wellcome </span> <div class="dropdown ">
-  <div tabindex="0" role="" class=""> {first_name} {last_name}</div>
+  <div tabindex="0" role="" class="flex items-center"> {first_name} {last_name}<FaCaretDown></FaCaretDown></div>
   <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow  rounded-box w-52 bg-red-400">
     <li onClick={hnadleLogout} className=" text-[18px] text-white hover:bg-slate-300 rounded-[10px]"><a>Logout</a></li>
     

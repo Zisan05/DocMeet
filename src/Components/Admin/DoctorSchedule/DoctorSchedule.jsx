@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 
 const DoctorSchedule = () => {
@@ -53,6 +54,25 @@ const handleCreateSchedule =  (e) => {
       .then((data) => {
 
         console.log(data);
+
+        if(data === "Successful in creating a appointment."){
+          Swal.fire({
+            title: "Successfull",
+            text: "You successully create a schedule!",
+            icon: "success",
+            
+          });
+          e.target.reset();
+        }
+
+        if(data === "UnSuccessful in creating a appointment."){
+          Swal.fire({
+            title: "Error",
+            text: "Please enter the correct imformation !",
+            icon: "error",
+            
+          });
+        }
     
       })
       .catch((error) => {

@@ -231,9 +231,14 @@ fetch(`https://pmshosen.pythonanywhere.com/api/doctor/book-list/`, {
           <td className="border-2 text-center">{item.start_time} AM</td>
           <td className="border-2 text-center">{item.end_time} PM</td>
            {
-            item.is_complete === true ? <td className="border-2 text-center">Finish</td> : <td className="border-2 text-center">Pending</td>
+            item.is_complete === true ? <td className="border-2 text-center">Meet completed</td> : <td className="border-2 text-center">Pending</td>
            }
-           <td className="border-2 text-center"><button onClick={() => handleconfirm(item.id)} className="bg-red-400 text-white font-semibold py-[5px] px-[5px] rounded-[3px] hover:bg-slate-600">Confirm</button></td>
+           <td className="border-2 text-center">
+            {
+              item.is_complete === false ? <button onClick={() => handleconfirm(item.id)} className="bg-red-400 text-white font-semibold py-[5px] px-[5px] rounded-[3px] hover:bg-slate-600">Confirm</button> : 
+              <button  className="bg-red-400 text-white font-semibold py-[5px] px-[5px] rounded-[3px] hover:bg-slate-600 disabled">Confirm</button>
+            }
+           </td>
            <td className="border-2 text-center"><button onClick={() => handleDelete(item.id)} className="bg-slate-600 text-white font-semibold py-[5px] px-[5px] rounded-[3px] hover:bg-red-400">Delete</button></td>
           
         </tr>
