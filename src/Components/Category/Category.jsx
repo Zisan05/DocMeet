@@ -127,9 +127,9 @@ const{email,image,name,qualification,specialization} = DocPersonalInfo;
         <div className=" container mx-auto ">
 
           {/* category list  */}
-            <div className="flex gap-[40px] md:gap-[60px] lg:gap-[120px] overflow-x-auto mt-[50px] ">
+            <div className="flex gap-[40px] md:gap-[60px] lg:gap-[120px] overflow-x-auto mt-[50px] " >
            {
-            CategoryData.map(data => <div className="" onClick={() => handleDocData(data.id)}>
+            CategoryData.map(data => <div className="" data-aos="flip-right"  data-aos-duration="2000" onClick={() => handleDocData(data.id)}>
                 <img className="h-[120px] w-[120px] rounded-[50%] p-[5px]" src={data.picture} alt="" />
                 <h1 className="text-[20px] font-bold text-slate-600 md:ml-[10px] lg:ml-[30px]">{data.name}</h1>
             </div>)
@@ -143,7 +143,7 @@ const{email,image,name,qualification,specialization} = DocPersonalInfo;
         }
         <div className="flex gap-[20px] md:gap-[60px] lg:gap-[180px] overflow-x-auto mt-[20px] ">
            {
-            docData.map(data => <div className="mt-[30px] focus:border-b-4 border-b-slate-600 px-[20px] md:px-[20px] lg:px-[0px]"  tabIndex="0" onClick={() => handleCardData(data.id)}>
+            docData.map(data => <div data-aos="flip-down" data-aos-duration="2000" className="mt-[30px] focus:border-b-4 border-b-slate-600 px-[20px] md:px-[20px] lg:px-[0px]"  tabIndex="0" onClick={() => handleCardData(data.id)}>
                 <img className="h-[120px] w-[120px] rounded-[50%] " src={data.picture} alt="" />
                 <h1 className="text-[20px] font-bold text-red-400 text-center ">{data.first_name} {data.last_name}</h1>
             </div>)
@@ -156,7 +156,7 @@ const{email,image,name,qualification,specialization} = DocPersonalInfo;
         <div className="grid md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-3 gap-[20px] mt-[50px] ">
             {
               cardData.map(data => <div>
-                   <div className="card card-side bg-base-300 shadow-xl  w-full h-[270px]  pl-[10px] items-center mb-[20px]">
+                   <div data-aos="fade-left" data-aso-duration="2000" className="card card-side bg-base-300 shadow-xl  w-full h-[270px]  pl-[10px] items-center mb-[20px]">
   <figure  onClick={() => handleDocPersonalInfo(data.id)}><img onClick={()=>document.getElementById('my_modal_1').showModal()} className="h-[150px] w-[150px] rounded-[10px]" src={data.doctor_detail.picture} alt=""/></figure>
 
 {/* modal */}

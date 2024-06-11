@@ -180,7 +180,7 @@ const handlePostApointment = (id) => {
 
     return (
         <div style={{backgroundImage: "url('https://i.ibb.co/Z6yPw9C/Exemplary-Professional-Expertise.jpg')",backgroundRepeat: 'no-repeat', backgroundSize: 'cover' } } className="px-[45px] md:px-[60px] lg:px-[200px] flex flex-col md:flex-row gap-[50px] py-[50px] ">
-        <div className="bg-slate-300 pb-[20px] w-[280px]">
+        <div className="bg-slate-300 pb-[20px] w-[280px]" data-aos="fade-right" data-aso-duration="2000">
         <img className="h-[200px] w-[280px]" src={picture} alt="" />
 
         <h1 className="text-[35px] 
@@ -194,7 +194,7 @@ const handlePostApointment = (id) => {
         </Link>
         </div>
 
-        <div className=" w-[320px] md:w-[500px] lg:w-[800px] bg-slate-300 pb-[20px] px-0 md:px-[20px] lg:px-0 ml-[-20px] md:mr-0 lg:mr-0">
+        <div className=" w-[320px] md:w-[500px] lg:w-[800px] bg-slate-300 pb-[20px] px-0 md:px-[20px] lg:px-0 ml-[-20px] md:mr-0 lg:mr-0"  data-aos="fade-left" data-aso-duration="2000">
             <h1 className="text-[35px] ml-[20px] mt-[20px] text-center underline font-semibold">Apointment Info</h1>
 
 {/* apointment booking info */}

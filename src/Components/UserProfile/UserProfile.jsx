@@ -87,7 +87,7 @@ const UserProfile = () => {
         <div className="h-full" style={{backgroundImage: "url('https://i.ibb.co/Z6yPw9C/Exemplary-Professional-Expertise.jpg')",backgroundRepeat: 'no-repeat', backgroundSize: 'cover' } }>
 
 <div  className=" flex flex-col md:flex-row gap-[50px] py-[50px]  mx-[40px] md:mx-[20px] lg:mx-[250px]">
-            <div className="bg-slate-300 pb-[20px] w-[300px] ">
+            <div className="bg-slate-300 pb-[20px] w-[300px] "data-aos="fade-right" data-aso-duration="2000">
             <img className="h-[200px] w-[300px]" src={picture} alt="" />
 
             <h1 className="text-[35px] 
@@ -100,7 +100,7 @@ const UserProfile = () => {
             </Link>
             </div>
 
-            <div className=" w-[300px] md:w-[500px] lg:w-[800px] bg-slate-300 pb-[20px] pr-[10px] md:pr-[10px] lg:pr-0">
+            <div className=" w-[300px] md:w-[500px] lg:w-[800px] bg-slate-300 pb-[20px] pr-[10px] md:pr-[10px] lg:pr-0" data-aos="fade-left" data-aso-duration="2000">
                 <h1 className="text-[35px] ml-[20px] mt-[20px] text-center underline font-semibold">Profile</h1>
              <h1 className="text-[35px] ml-[20px] mt-[20px] text-red-400 font-semibold  bg-gradient-to-r from-red-400 to-slate-400 text-transparent bg-clip-text">{first_name} {last_name}</h1>
              <p className="border-b-2 border-b-white w-[95%] mx-auto mt-[20px]"></p>
