@@ -47,7 +47,7 @@ const Login = () => {
       .then(res => res.json())
       .then(data => {
          
-   
+
           localStorage.setItem('Access token', data.access);
           localStorage.setItem('Refresh token', data.refresh);
 

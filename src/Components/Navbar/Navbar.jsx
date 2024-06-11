@@ -5,41 +5,85 @@ import {  useEffect, useState } from "react";
 
 const Navbar = () => {
 
-  const token = localStorage.getItem('Access token');
+  const Atoken = localStorage.getItem('Access token');
+  const Rtoken = localStorage.getItem('Refresh token');
+
+  const token = {Access : Atoken,refresh : Rtoken};
 
   
 
   const [userData,setUserData] = useState('undefined')
 
 
+ console.log(Atoken);
+
+
+// useEffect(() => {
+
+
+//   fetch(`https://pmshosen.pythonanywhere.com/api/patient/profile/`,{
+//     method:"GET",
+//     credentials: "include",
+//     headers: {
+//         "content-type":"application/json",
+//         "Authorization": `Bearer ${token}`,
+//     },
+    
+// })
+// .then(res => res.json())
+// .then(data => {
+
+// console.log(data);
+//   setUserData(data)
+
  
+  
+// })
+// } ,[setUserData])
 
-
-useEffect(() => {
-
-
-  fetch(`https://pmshosen.pythonanywhere.com/api/patient/profile/`,{
-    method:"GET",
+useEffect( () => {
+  fetch(`https://pmshosen.pythonanywhere.com/api/patient/login/refresh/`,{
+    method:"POST",
     credentials: "include",
     headers: {
         "content-type":"application/json",
-        "Authorization": `Bearer ${token}`,
+        
     },
+    body:  JSON.stringify(token) ,
     
 })
 .then(res => res.json())
 .then(data => {
 
 
-  setUserData(data)
 
- 
-  
+  const newTok =data.access;
+
+  console.log(newTok);
+
+  fetch(`https://pmshosen.pythonanywhere.com/api/patient/profile/`,{
+    method:"GET",
+    credentials: "include",
+    headers: {
+        "content-type":"application/json",
+        "Authorization": `Bearer ${newTok}`,
+    },
+    
 })
-} ,[setUserData])
+.then(res => res.json())
+.then(data => {
+
+  
+  setUserData(data)
+})
+
+})
+},[setUserData]);
   
 
 const {first_name,picture} = userData;
+
+console.log(first_name,picture);
 
 
 // remove token
@@ -77,7 +121,7 @@ const handleRemoveToken = () => {
           
  
           {
-           token === null  ? <Link to={'/login'}> <button className="bg-red-400 p-[15px] font-semibold text-[20px] w-[80px] rounded-[5px] hover:bg-slate-300">login</button> </Link> : <div className="flex items-center gap-[5px]">
+           Atoken === null  ? <Link to={'/login'}> <button className="bg-red-400 p-[15px] font-semibold text-[20px] w-[80px] rounded-[5px] hover:bg-slate-300">login</button> </Link> : <div className="flex items-center gap-[5px]">
          <h1 className="text-[23px] text-slate-600 font-bold">Hi!  <span className="text-red-400">{first_name}</span></h1>
          
           
@@ -108,7 +152,7 @@ const handleRemoveToken = () => {
       
 
       {
-        token === null ? <Link to={"/login"}><button className="bg-red-400 p-[15px] font-semibold text-[20px] w-[80px] rounded-[5px] hover:bg-slate-300">login</button></Link> : <div className=" mx-auto items-center gap-[5px]">
+        Atoken === null ? <Link to={"/login"}><button className="bg-red-400 p-[15px] font-semibold text-[20px] w-[80px] rounded-[5px] hover:bg-slate-300">login</button></Link> : <div className=" mx-auto items-center gap-[5px]">
 
 <div className="dropdown dropdown-bottom md:dropdown-end ">
    <div tabIndex={0} role="button" className=" m-1 "><img className="h-[45px] w-[45px] rounded-[50%] mb-[10px] ml-[30px]" alt="photo upload soon" src={picture}/></div>

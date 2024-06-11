@@ -44,6 +44,8 @@ const file = e.target.files[0];
 const formData = new FormData();
   formData.append('image', file);
 
+  console.log(file);
+
 
 fetch(imgApi,{
     method: 'POST',
@@ -246,7 +248,7 @@ const handleUpdateData = e => {
                         pathname === "booking" ? navigate(location?.state ? location.state : `/${pathname}/${_id}`)
                          : navigate(location?.state ? location.state : `/${pathname}`)
                     }
-                    // window.location.reload()
+                    location.reload()
                     
                   }
                 });

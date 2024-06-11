@@ -48,13 +48,8 @@ const ApointmentBooking = () => {
       })
       .then(res => res.json())
       .then(data => {
-    
-    
-    
+  
         setNewtok(data.access);
-    
-       
-      
     
       })
       },[setNewtok]);
