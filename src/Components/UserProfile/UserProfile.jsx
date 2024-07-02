@@ -100,7 +100,7 @@ const UserProfile = () => {
             </Link>
             </div>
 
-            <div className=" w-[300px] md:w-[500px] lg:w-[800px] bg-slate-300 pb-[20px] pr-[10px] md:pr-[10px] lg:pr-0" data-aos="fade-left" data-aso-duration="2000">
+            <div className=" w-[320px] md:w-[500px] lg:min-w-[800px] bg-slate-300 pb-[20px] pr-[10px] md:pr-[10px] lg:pr-0" data-aos="fade-left" data-aso-duration="2000">
                 <h1 className="text-[35px] ml-[20px] mt-[20px] text-center underline font-semibold">Profile</h1>
              <h1 className="text-[35px] ml-[20px] mt-[20px] text-red-400 font-semibold  bg-gradient-to-r from-red-400 to-slate-400 text-transparent bg-clip-text">{first_name} {last_name}</h1>
              <p className="border-b-2 border-b-white w-[95%] mx-auto mt-[20px]"></p>

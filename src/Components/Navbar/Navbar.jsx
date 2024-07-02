@@ -18,28 +18,6 @@ const Navbar = () => {
  console.log(Atoken);
 
 
-// useEffect(() => {
-
-
-//   fetch(`https://pmshosen.pythonanywhere.com/api/patient/profile/`,{
-//     method:"GET",
-//     credentials: "include",
-//     headers: {
-//         "content-type":"application/json",
-//         "Authorization": `Bearer ${token}`,
-//     },
-    
-// })
-// .then(res => res.json())
-// .then(data => {
-
-// console.log(data);
-//   setUserData(data)
-
- 
-  
-// })
-// } ,[setUserData])
 
 useEffect( () => {
   fetch(`https://pmshosen.pythonanywhere.com/api/patient/login/refresh/`,{

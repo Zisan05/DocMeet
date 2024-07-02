@@ -274,18 +274,18 @@ const handleUpdateData = e => {
                 image ? <div>
                     {
     sendPhoto === undefined ? (
-        <span className="loading loading-spinner loading-lg relative left-[140px] md:left-[360px] lg:left-[810px] top-[40px] text-red-400"></span>
+        <span className="loading loading-spinner loading-lg flex mx-auto mt-[20px] top-[40px] text-red-400"></span>
     ) : (
         <div>
             <img className="h-[200px] w-[200px] rounded-[50%] mx-auto mt-[50px]" src={URL.createObjectURL(image)} alt="" />
-            <FaCamera className="text-[35px] absolute left-[220px] md:left-[440px] lg:left-[900px] top-[240px] text-red-400 bg-slate-200 w-[50px] h-[50px] p-[10px] rounded-[20px]" onClick={handleImageClick} />
+            <FaCamera className="text-[35px] mx-auto relative left-[70px] bottom-[70px]  text-red-400 bg-slate-200 w-[50px] h-[50px] p-[10px] rounded-[20px]" onClick={handleImageClick} />
         </div>
     )
 }
 
 <input type="file" ref={inputRef} onChange={handleChangeImage}  className="hidden"/> 
                 </div> : <div>
-                <img className="h-[200px] w-[200px] rounded-[50%] mx-auto mt-[50px]" src={picture} alt="" /><FaCamera className="text-[35px] absolute left-[220px] md:left-[440px] lg:left-[890px] top-[350px] text-red-400 bg-slate-200 w-[50px] h-[50px] p-[10px] rounded-[20px]"   onClick={handleImageClick}></FaCamera> 
+                <img className="h-[200px] w-[200px] rounded-[50%] mx-auto mt-[50px]" src={picture} alt="" /><FaCamera className="text-[35px] mx-auto relative left-[70px] bottom-[70px] text-red-400 bg-slate-200 w-[50px] h-[50px] p-[10px] rounded-[20px]"   onClick={handleImageClick}></FaCamera> 
 
 <input type="file" ref={inputRef} onChange={handleChangeImage}  className="hidden"/> 
                 </div>

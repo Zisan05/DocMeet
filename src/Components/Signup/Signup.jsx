@@ -75,9 +75,9 @@ const Signup = () => {
 
     return (
         <div>
-        <div  className="bg-cover bg-center h-[922px]" style={{backgroundImage: "url('https://i.ibb.co/VM2fyfm/stethoscope-doctor-md-medical-health-hospital.jpg')"}}>
+        <div  className="bg-cover bg-center h-[922px] flex" style={{backgroundImage: "url('https://i.ibb.co/VM2fyfm/stethoscope-doctor-md-medical-health-hospital.jpg')"}}>
 
-        <div className="bg-white w-[335px] md:w-[400px] absolute left-[20px] md:left-[200px] lg:left-[600px] top-[200px] px-[20px]  rounded-[10px] py-[80px]">
+        <div className="bg-white w-[335px] md:w-[400px] mx-auto my-auto px-[20px]  rounded-[10px] py-[80px]">
         <h1 className="text-[28px] text-red-400 font-semibold text-center">Lets create an acoount! </h1>
        
 
@@ -100,9 +100,9 @@ const Signup = () => {
 
             {
               seen === "text" ?
-               <span onClick={handletogol}><IoEyeOffOutline className="text-[20px] absolute left-[240px] md:left-[320px] top-[330px] md:top-[330px]"></IoEyeOffOutline></span>
+               <span onClick={handletogol}><IoEyeOffOutline className="text-[30px] relative left-[200px] md:left-[280px] bottom-[32px]"></IoEyeOffOutline></span>
               :
-              <span onClick={handletogol}><IoEyeOutline className="text-[20px] absolute left-[240px] md:left-[320px] top-[330px] md:top-[330px]"></IoEyeOutline></span>
+              <span onClick={handletogol}><IoEyeOutline className="text-[30px] relative left-[200px] md:left-[280px] bottom-[32px]"></IoEyeOutline></span>
             }
             
             </div>
