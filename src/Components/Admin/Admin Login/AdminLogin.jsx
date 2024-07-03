@@ -95,7 +95,7 @@ const AdminLogin = () => {
             <div>
             <div  className="bg-cover bg-center h-[1100px]" style={{backgroundImage: "url('https://i.ibb.co/VM2fyfm/stethoscope-doctor-md-medical-health-hospital.jpg')"}}>
 
-            <div className="bg-white w-[335px] md:w-[400px] absolute left-[20px] md:left-[200px] lg:left-[750px] top-[200px] px-[20px]  rounded-[10px] py-[80px]">
+            <div className="bg-white w-[335px] md:w-[400px]  mx-auto relative top-[200px] px-[20px]  rounded-[10px] py-[80px]">
             <h1 className="text-[28px] text-red-400 font-semibold text-center">Welcome Back! </h1>
            
 

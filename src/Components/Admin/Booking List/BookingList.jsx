@@ -199,7 +199,7 @@ fetch(`https://pmshosen.pythonanywhere.com/api/doctor/book-list/`, {
            <h1 className="text-[25px] bg-red-400 py-[10px] pl-[30px] text-white font-semibold">Booking List</h1>
 
            <div>
-           <div className="overflow-x-auto ">
+           <div className="overflow-x-auto h-[520px] overflow-x-auto">
 <table className="table table-zebra">
 {/* head */}
 <thead>
