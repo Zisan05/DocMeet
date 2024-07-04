@@ -88,7 +88,7 @@ const handleCreateSchedule =  (e) => {
             <div className="  lg:w-[800px] flex flex-col md:flex-row ">
                 <div className="bg-red-400 w-[350px] hidden md:hidden lg:block">
                    <h1 className="text-white text-[30px] md:text-[25px] lg:text-[35px] font-semibold text-center relative top-[200px]">Hey</h1>
-                   <h1 className="text-white text-[30px] md:text-[25px] lg:text-[35px] font-semibold text-center relative top-[200px]">Wellcome to the DocMeet</h1>
+                   <h1 className="text-white text-[30px] md:text-[25px] lg:text-[35px] font-semibold text-center relative top-[200px]">Here you can create a schedule when you are free.</h1>
                 </div>
 
                 <div className="md:w-[550px] lg:w-[400px]  pb-[50px] bg-slate-600">

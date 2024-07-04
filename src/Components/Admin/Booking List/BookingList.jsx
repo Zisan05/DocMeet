@@ -88,7 +88,7 @@ fetch('https://pmshosen.pythonanywhere.com/api/doctor/book-confirm/', {
 })
 .then(res => {          
 res.json();
-console.log(res);
+
 })
 .then(data => {
   
@@ -189,6 +189,66 @@ fetch(`https://pmshosen.pythonanywhere.com/api/doctor/book-list/`, {
 }
 
 
+// Doctor meet work
+
+const handleMeet = (id) => {
+
+  fetch('https://pmshosen.pythonanywhere.com/api/doctor/meet-with-patient/', {
+    method: "PATCH",
+    credentials: "include",
+    headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${newtok}`,
+    },
+    body: JSON.stringify({"id":id}) 
+  })
+  .then(res => {          
+  res.json();
+  
+  })
+  .then(data => {
+    
+  
+  console.log(data);
+  
+  if(data===undefined) {
+    Swal.fire({
+      title: "Successfull",
+      text: "Your appointment book successfully",
+      icon: "success",
+      
+    });
+
+  }
+
+
+// data refetch
+
+  fetch(`https://pmshosen.pythonanywhere.com/api/doctor/book-list/`, {
+  method: "GET",
+  credentials: "include",
+  headers: {
+    "content-type": "application/json",
+    "Authorization": `Bearer ${newtok}`,
+  },
+})
+  .then((res) => res.json())
+  .then((data) => {
+
+    console.log(data);
+    // Ensure data is an array or convert it to an array
+    const booklistArray = Array.isArray(data) ? data : [data];
+     // Verify the structure of the data received
+    setBooklist(booklistArray);
+  })
+  .catch((error) => {
+    console.error("Error fetching book list:", error);
+  });
+})
+
+}
+
+
   
 
     return (
@@ -199,7 +259,7 @@ fetch(`https://pmshosen.pythonanywhere.com/api/doctor/book-list/`, {
            <h1 className="text-[25px] bg-red-400 py-[10px] pl-[30px] text-white font-semibold">Booking List</h1>
 
            <div>
-           <div className="overflow-x-auto h-[520px] overflow-x-auto">
+           <div className="overflow-x-auto h-[520px] ">
 <table className="table table-zebra">
 {/* head */}
 <thead>
@@ -213,7 +273,7 @@ fetch(`https://pmshosen.pythonanywhere.com/api/doctor/book-list/`, {
     <th className="text-[20px] border-2 text-center">Date</th>
     <th className="text-[20px] border-2 text-center">Start</th>
     <th className="text-[20px] border-2 text-center">End</th>
-    <th className="text-[20px] border-2 text-center">Status</th>
+    <th className="text-[20px] border-2 text-center">Activities</th>
     <th className="text-[20px] border-2 text-center">Activities</th>
     <th className="text-[20px] border-2 text-center">Activities</th>
   </tr>
@@ -230,16 +290,16 @@ fetch(`https://pmshosen.pythonanywhere.com/api/doctor/book-list/`, {
           <td className="border-2 text-center">{item.date}</td>
           <td className="border-2 text-center">{item.start_time} AM</td>
           <td className="border-2 text-center">{item.end_time} PM</td>
-           {
-            item.is_complete === true ? <td className="border-2 text-center">Meet completed</td> : <td className="border-2 text-center">Pending</td>
-           }
+          
            <td className="border-2 text-center">
             {
               item.is_complete === false ? <button onClick={() => handleconfirm(item.id)} className="bg-red-400 text-white font-semibold py-[5px] px-[5px] rounded-[3px] hover:bg-slate-600">Confirm</button> : 
-              <button  className="bg-red-400 text-white font-semibold py-[5px] px-[5px] rounded-[3px] hover:bg-slate-600 disabled">Confirm</button>
+              <h1 className="font-bold text-red-400">Accepted</h1>
             }
            </td>
-           <td className="border-2 text-center"><button onClick={() => handleDelete(item.id)} className="bg-slate-600 text-white font-semibold py-[5px] px-[5px] rounded-[3px] hover:bg-red-400">Delete</button></td>
+           <td className="border-2 text-center"><button onClick={() => handleMeet(item.id)} className="bg-slate-600 text-white font-semibold py-[5px] px-[5px] rounded-[3px] hover:bg-red-400">Meet</button></td>
+
+           <td className="border-2 text-center"><button onClick={() => handleDelete(item.id)} className="bg-red-400 text-white font-semibold py-[5px] px-[5px] rounded-[3px] hover:bg-slate-600">Delete</button></td>
           
         </tr>
        
