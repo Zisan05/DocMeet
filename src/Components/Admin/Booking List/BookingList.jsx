@@ -98,7 +98,7 @@ console.log(data);
 if(data===undefined) {
   Swal.fire({
     title: "Successfull",
-    text: "Your appointment book successfully",
+    text: "user's appointment book successfully",
     icon: "success",
     
   });
@@ -155,7 +155,7 @@ const handleDelete  = (id) => {
           if(data === "Successful in deleting a book."){
             Swal.fire({
               title: "Successfull",
-              text: "Delete Your appointment successfully",
+              text: "Delete user's appointment successfully",
               icon: "success",
               
             });
@@ -214,7 +214,7 @@ const handleMeet = (id) => {
   if(data===undefined) {
     Swal.fire({
       title: "Successfull",
-      text: "Your appointment book successfully",
+      text: "User's meet with doctor complete successfully",
       icon: "success",
       
     });
