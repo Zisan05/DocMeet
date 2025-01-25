@@ -72,7 +72,8 @@ const ApointmentBooking = () => {
       .then(res => res.json())
       .then(data => {
         
-      
+      console.log(data);
+
       setUserData(data);
     
       })
@@ -153,7 +154,7 @@ const handlePostApointment = (id) => {
       })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
+       
         if(data.message === "Send your appointment request!"){
           Swal.fire({
             title: "Successfull",
@@ -180,7 +181,7 @@ const handlePostApointment = (id) => {
 
     return (
         <div style={{backgroundImage: "url('https://i.ibb.co/Z6yPw9C/Exemplary-Professional-Expertise.jpg')",backgroundRepeat: 'no-repeat', backgroundSize: 'cover' } } className="px-[45px] md:px-[60px] lg:px-[200px] flex flex-col md:flex-row gap-[50px] py-[50px] ">
-        <div className="bg-slate-300 pb-[20px] w-[280px]" data-aos="fade-right" data-aso-duration="2000">
+        <div className="bg-slate-300 pb-[20px] w-[280px] overflow-hidden" data-aos="fade-right" data-aso-duration="2000">
         <img className="h-[200px] w-[280px]" src={picture} alt="" />
 
         <h1 className="text-[35px] 

@@ -103,7 +103,7 @@ const Rtoken = localStorage.getItem('Refresh token');
   .then(res => res.json())
   .then(data => {
 
- 
+
 
     setNewtok(data.access);
 
@@ -121,14 +121,16 @@ useEffect( () => {
       method:"GET",
       credentials: "include",
       headers: {
-          "content-type":"application/json",
-          "Authorization": `Bearer ${newtok}`,
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${newtok}`,
       },
       
       
   })
   .then(res => res.json())
   .then(data => {
+
+    console.log(data);
     
   setUserData(data);
 
@@ -188,8 +190,8 @@ const handleUpdateData = e => {
               method:"POST",
               credentials: "include",
               headers: {
-                  "content-type":"application/json",
-                  
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${newtok}`,
               },
               body:  JSON.stringify(token) ,
               
@@ -197,6 +199,7 @@ const handleUpdateData = e => {
           .then(res => res.json())
           .then(data => {
         
+
             setNewtok(data.access);
         
           })
@@ -212,10 +215,6 @@ const handleUpdateData = e => {
 
         
         
-        console.log(updatedInfo);
-        
-        const Authentication = newtok; // Assuming newtok holds the authentication token
-        
         fetch('https://mdzisanislam.pythonanywhere.com/api/patient/profile-info-update/', {
             method: "PATCH",
             credentials: "include",
@@ -230,6 +229,8 @@ const handleUpdateData = e => {
           })
         .then(data => {
             
+
+            console.log(data);
          
             if(data === undefined) {
                 Swal.fire({
@@ -332,7 +333,7 @@ const handleUpdateData = e => {
                     
                     <div>
                     <label className=" text-white">Date of birth</label>
-                        <input  type="text" placeholder="Year-Month-Day" defaultValue={date_of_birth} name="date_of_birth" className="p-3 block w-full  drop-shadow-lg outline-none" />
+                        <input  type="text" placeholder="Year-Month-Day" required defaultValue={date_of_birth} name="date_of_birth" className="p-3 block w-full  drop-shadow-lg outline-none" />
                     </div>
 
                     <div className="flex flex-col  md:flex-row lg:flex-row gap-[20px]">

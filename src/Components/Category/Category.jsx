@@ -159,7 +159,7 @@ const{email,image,name,qualification,specialization} = DocPersonalInfo;
           {/* category list  */}
             <div className="flex gap-[40px] md:gap-[60px] lg:gap-[120px] overflow-x-auto mt-[50px] " >
            {
-            CategoryData.map(data => <div className=" min-w-[100px]" data-aos="flip-right"  data-aos-duration="2000" onClick={() => handleDocData(data.id)}>
+            CategoryData.map(data => <div className=" min-w-[100px] overflow-hidden" data-aos="flip-right"  data-aos-duration="2000" onClick={() => handleDocData(data.id)}>
                 <img className="h-[120px] w-[120px] rounded-[50%] p-[5px]" src={data.picture} alt="" />
                 <h1 className="text-[20px] font-bold text-slate-600 md:ml-[10px] lg:ml-[30px]">{data.name}</h1>
             </div>)
@@ -192,7 +192,7 @@ const{email,image,name,qualification,specialization} = DocPersonalInfo;
   
     {
       cardData.map(data => <div>
-           <div data-aos="fade-left" data-aso-duration="2000" className="card card-side bg-gradient-to-r from-red-400 via-white to-white shadow-xl  w-full  h-[270px]  pl-[10px] items-center mb-[20px]">
+           <div data-aos="fade-left" data-aso-duration="2000" className="card card-side bg-gradient-to-r from-red-400 via-white to-white shadow-xl  w-full  h-[270px]  pl-[10px] items-center mb-[20px] overflow-hidden">
 <figure  onClick={() => handleDocPersonalInfo(data.id)}><img onClick={()=>document.getElementById('my_modal_1').showModal()} className="h-[150px] w-[150px] rounded-[10px]" src={data.doctor_detail.picture} alt=""/></figure>
 
 {/* modal */}
@@ -246,9 +246,9 @@ const{email,image,name,qualification,specialization} = DocPersonalInfo;
 
 <h1 className="text-[40px] mt-[60px] font-bold text-red-400 text-center underline">Recent Doctor Appointments</h1>
 
-<div className="grid md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-3 gap-[20px] mt-[50px] ">
+<div className="grid md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-3 gap-[20px] mt-[50px] overflow-hidden">
 {
-  recent.map(re => (   <div data-aos="fade-left" data-aso-duration="2000" className="card card-side bg-gradient-to-r from-red-400 via-white to-white  shadow-xl  w-full  h-[270px]  pl-[10px] items-center mb-[20px]">
+  recent.map(re => (   <div data-aos="fade-left" data-aso-duration="2000" className="card card-side bg-gradient-to-r from-red-400 via-white to-white  shadow-xl  w-full  h-[270px]  pl-[10px] items-center mb-[20px] overflow-hidden">
   <figure  onClick={() => handleDocPersonalInfo(re.id)}><img onClick={()=>document.getElementById('my_modal_1').showModal()} className="h-[150px] w-[150px] rounded-[10px]" src={re.doctor_detail.picture} alt=""/></figure>
 
 {/* modal */}

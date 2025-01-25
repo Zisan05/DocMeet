@@ -86,13 +86,13 @@ const UserProfile = () => {
     return (
         <div className="h-full" style={{backgroundImage: "url('https://i.ibb.co/Z6yPw9C/Exemplary-Professional-Expertise.jpg')",backgroundRepeat: 'no-repeat', backgroundSize: 'cover' } }>
 
-<div  className=" flex flex-col md:flex-row gap-[50px] py-[50px]  mx-[40px] md:mx-[20px] lg:mx-[250px]">
-            <div className="bg-slate-300 pb-[20px] w-[300px] "data-aos="fade-right" data-aso-duration="2000">
-            <img className="h-[200px] w-[300px]" src={picture} alt="" />
+<div  className=" flex flex-col md:flex-row gap-[50px] py-[50px]  justify-center ">
+            <div className="bg-slate-300 pb-[20px] w-full md:w-[250px] lg:w-[270px] " data-aos="fade-right" data-aso-duration="2000">
+            <img className="h-[200px] w-full md:w-[300px]" src={picture} alt="" />
 
-            <h1 className="text-[35px] 
+            <h1 className="text-[25px] 
         bg-gradient-to-r from-red-400 to-slate-400 text-transparent bg-clip-text  mt-[10px] font-semibold pl-[10px] md:pl-[10px] lg:pl-[30px]">{first_name} {last_name}</h1>
-            <h1 className="  text-[20px] mt-[10px] font-semibold pl-[10px] md:pl-[10px] lg:pl-[30px]">Email : <span className="text-red-400  bg-gradient-to-r from-red-400 to-slate-400 text-transparent bg-clip-text">{email}</span></h1>
+            <h1 className="  text-[20px] mt-[10px] font-semibold pl-[10px] md:pl-[10px] lg:pl-[5px]">Email : <span className="text-red-400  bg-gradient-to-r from-red-400 to-slate-400 text-transparent bg-clip-text">{email}</span></h1>
 
             <p className="border-b-2 border-b-white w-[80%] mx-auto mt-[20px]"></p>
             <Link to={`/update${pathname}/1`}>
@@ -100,7 +100,7 @@ const UserProfile = () => {
             </Link>
             </div>
 
-            <div className=" w-[320px] md:w-[500px] lg:min-w-[800px] bg-slate-300 pb-[20px] pr-[10px] md:pr-[10px] lg:pr-0" data-aos="fade-left" data-aso-duration="2000">
+            <div className=" w-full md:w-[500px] lg:min-w-[800px] bg-slate-300 pb-[20px] pr-[10px] md:pr-[10px] lg:pr-0 overflow-hidden" data-aos="fade-left" data-aso-duration="2000">
                 <h1 className="text-[35px] ml-[20px] mt-[20px] text-center underline font-semibold">Profile</h1>
              <h1 className="text-[35px] ml-[20px] mt-[20px] text-red-400 font-semibold  bg-gradient-to-r from-red-400 to-slate-400 text-transparent bg-clip-text">{first_name} {last_name}</h1>
              <p className="border-b-2 border-b-white w-[95%] mx-auto mt-[20px]"></p>

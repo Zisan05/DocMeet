@@ -55,7 +55,7 @@ const handleCreateSchedule =  (e) => {
 
         console.log(data);
 
-        if(data === "Successful in creating a appointment."){
+        if(data.message === "Successful in creating a appointment."){
           Swal.fire({
             title: "Successfull",
             text: "You successully create a schedule!",

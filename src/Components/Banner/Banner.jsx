@@ -37,7 +37,7 @@ const Banner = () => {
 
 
     {/* banner text */}
-      <div className="md:w-[600px] lg:w-[700px]  md:pl-[100px] lg:pl-[150px] pt-[100px]" data-aos="fade-right"
+      <div className="md:w-[600px] lg:w-[700px] pl-[20px] md:pl-[100px] lg:pl-[150px] pt-[100px]" data-aos="fade-right"
      data-aos-duration="2000">
         <h1 className="text-[45px] font-semibold text-slate-600 ">Easy appointments<br />  and quick consultations!</h1>
         <p className="text-[20px] text-red-400 font-semibold mt-[20px]">Effortless <span className="text-slate-600">health</span> access and early protection for you and your family members to grow up <span className="text-slate-600">healthy</span>.</p>

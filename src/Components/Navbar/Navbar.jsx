@@ -15,7 +15,7 @@ const Navbar = () => {
   const [userData,setUserData] = useState('undefined')
 
 
- console.log(Atoken);
+
 
 
 
@@ -37,7 +37,7 @@ useEffect( () => {
 
   const newTok =data.access;
 
-  console.log(newTok);
+
 
   fetch(`https://mdzisanislam.pythonanywhere.com/api/patient/profile/`,{
     method:"GET",
@@ -61,7 +61,7 @@ useEffect( () => {
 
 const {first_name,picture} = userData;
 
-console.log(first_name,picture);
+
 
 
 // remove token
