@@ -20,7 +20,7 @@ const Navbar = () => {
 
 
 useEffect( () => {
-  fetch(`https://pmshosen.pythonanywhere.com/api/patient/login/refresh/`,{
+  fetch(`https://mdzisanislam.pythonanywhere.com/api/patient/login/refresh/`,{
     method:"POST",
     credentials: "include",
     headers: {
@@ -39,7 +39,7 @@ useEffect( () => {
 
   console.log(newTok);
 
-  fetch(`https://pmshosen.pythonanywhere.com/api/patient/profile/`,{
+  fetch(`https://mdzisanislam.pythonanywhere.com/api/patient/profile/`,{
     method:"GET",
     credentials: "include",
     headers: {

@@ -18,7 +18,7 @@ const Rtoken = localStorage.getItem('Doctor Refresh token');
 
 // refresh Api
   useEffect( () => {
-    fetch(`https://pmshosen.pythonanywhere.com/api/doctor/login/refresh/`,{
+    fetch(`https://mdzisanislam.pythonanywhere.com/api/doctor/login/refresh/`,{
       method:"POST",
       credentials: "include",
       headers: {
@@ -41,7 +41,7 @@ const Rtoken = localStorage.getItem('Doctor Refresh token');
 
 
 useEffect(() => {
-    fetch(`https://pmshosen.pythonanywhere.com/api/doctor/patient-list/`, {
+    fetch(`https://mdzisanislam.pythonanywhere.com/api/doctor/patient-list/`, {
       method: "GET",
       credentials: "include",
       headers: {

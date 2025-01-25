@@ -21,7 +21,7 @@ const handleCreateSchedule =  (e) => {
 
     const createData = {day,date,start_time,end_time};
 
-        fetch(`https://pmshosen.pythonanywhere.com/api/doctor/login/refresh/`,{
+        fetch(`https://mdzisanislam.pythonanywhere.com/api/doctor/login/refresh/`,{
           method:"POST",
           credentials: "include",
           headers: {
@@ -41,7 +41,7 @@ const handleCreateSchedule =  (e) => {
 
     //   Doctor Schedule posting
 
-    fetch(`https://pmshosen.pythonanywhere.com/api/doctor/appointment-create/`, {
+    fetch(`https://mdzisanislam.pythonanywhere.com/api/doctor/appointment-create/`, {
       method: "POST",
       credentials: "include",
       headers: {

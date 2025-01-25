@@ -19,7 +19,7 @@ const Rtoken = localStorage.getItem('Doctor Refresh token');
 
 
   useEffect( () => {
-    fetch(`https://pmshosen.pythonanywhere.com/api/doctor/login/refresh/`,{
+    fetch(`https://mdzisanislam.pythonanywhere.com/api/doctor/login/refresh/`,{
       method:"POST",
       credentials: "include",
       headers: {
@@ -43,7 +43,7 @@ const Rtoken = localStorage.getItem('Doctor Refresh token');
 //   geting booking list
 
 useEffect(() => {
-    fetch(`https://pmshosen.pythonanywhere.com/api/doctor/book-list/`, {
+    fetch(`https://mdzisanislam.pythonanywhere.com/api/doctor/book-list/`, {
       method: "GET",
       credentials: "include",
       headers: {
@@ -77,7 +77,7 @@ useEffect(() => {
 
 //confirm the book list
 
-fetch('https://pmshosen.pythonanywhere.com/api/doctor/book-confirm/', {
+fetch('https://mdzisanislam.pythonanywhere.com/api/doctor/book-confirm/', {
   method: "PATCH",
   credentials: "include",
   headers: {
@@ -108,7 +108,7 @@ if(data===undefined) {
 
 // refetch the data 
 
-fetch(`https://pmshosen.pythonanywhere.com/api/doctor/book-list/`, {
+fetch(`https://mdzisanislam.pythonanywhere.com/api/doctor/book-list/`, {
   method: "GET",
   credentials: "include",
   headers: {
@@ -140,7 +140,7 @@ fetch(`https://pmshosen.pythonanywhere.com/api/doctor/book-list/`, {
 const handleDelete  = (id) => {
 
 
-  fetch(`https://pmshosen.pythonanywhere.com/api/doctor/book-delete/${id}/`,{
+  fetch(`https://mdzisanislam.pythonanywhere.com/api/doctor/book-delete/${id}/`,{
             method:"DELETE",
             headers: {
                 "content-type":"application/json",
@@ -164,7 +164,7 @@ const handleDelete  = (id) => {
 
 // refetch the data 
 
-fetch(`https://pmshosen.pythonanywhere.com/api/doctor/book-list/`, {
+fetch(`https://mdzisanislam.pythonanywhere.com/api/doctor/book-list/`, {
   method: "GET",
   credentials: "include",
   headers: {
@@ -193,7 +193,7 @@ fetch(`https://pmshosen.pythonanywhere.com/api/doctor/book-list/`, {
 
 const handleMeet = (id) => {
 
-  fetch('https://pmshosen.pythonanywhere.com/api/doctor/meet-with-patient/', {
+  fetch('https://mdzisanislam.pythonanywhere.com/api/doctor/meet-with-patient/', {
     method: "PATCH",
     credentials: "include",
     headers: {
@@ -224,7 +224,7 @@ const handleMeet = (id) => {
 
 // data refetch
 
-  fetch(`https://pmshosen.pythonanywhere.com/api/doctor/book-list/`, {
+  fetch(`https://mdzisanislam.pythonanywhere.com/api/doctor/book-list/`, {
   method: "GET",
   credentials: "include",
   headers: {

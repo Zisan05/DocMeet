@@ -37,7 +37,7 @@ const Login = () => {
        
 
 
-        fetch('https://pmshosen.pythonanywhere.com/api/patient/login/',{
+        fetch('https://mdzisanislam.pythonanywhere.com/api/patient/login/',{
           method:"POST",
           headers: {
               "content-type":"application/json"

@@ -30,7 +30,7 @@ const Signup = () => {
 
      
 
-      fetch('https://pmshosen.pythonanywhere.com/api/patient/register/',{
+      fetch('https://mdzisanislam.pythonanywhere.com/api/patient/register/',{
             method:"POST",
             headers: {
                 "content-type":"application/json"

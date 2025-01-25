@@ -20,7 +20,7 @@ const Admin = () => {
 
 
       useEffect( () => {
-        fetch(`https://pmshosen.pythonanywhere.com/api/doctor/login/refresh/`,{
+        fetch(`https://mdzisanislam.pythonanywhere.com/api/doctor/login/refresh/`,{
           method:"POST",
           credentials: "include",
           headers: {
@@ -49,7 +49,7 @@ const Admin = () => {
     useEffect( () => {
 
       
-        fetch(`https://pmshosen.pythonanywhere.com/api/doctor/profile/`,{
+        fetch(`https://mdzisanislam.pythonanywhere.com/api/doctor/profile/`,{
           method:"GET",
           credentials: "include",
           headers: {

@@ -9,7 +9,7 @@ const Banner = () => {
   useEffect( () => {
 
       
-    fetch(`https://pmshosen.pythonanywhere.com/api/patient/today-date/`,{
+    fetch(`https://mdzisanislam.pythonanywhere.com/api/patient/today-date/`,{
       method:"GET",
       
       headers: {

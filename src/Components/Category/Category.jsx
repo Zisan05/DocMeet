@@ -18,7 +18,7 @@ const Category = () => {
     useEffect(() => {
 
 
-        fetch(`https://pmshosen.pythonanywhere.com//api/patient/specialization-list/`,{
+        fetch(`https://mdzisanislam.pythonanywhere.com//api/patient/specialization-list/`,{
           method:"GET",
           credentials: "include",
           headers: {
@@ -42,7 +42,7 @@ const Category = () => {
 
 const handleDocData = (Category_id) =>  {
 
-  fetch(`https://pmshosen.pythonanywhere.com/api/patient/doctor-list/`,{
+  fetch(`https://mdzisanislam.pythonanywhere.com/api/patient/doctor-list/`,{
     method:"GET",
     credentials: "include",
     headers: {
@@ -67,7 +67,7 @@ const handleDocData = (Category_id) =>  {
 const [recent , setRecent ] = useState([]);
 
 useEffect(() => {
-  fetch(`https://pmshosen.pythonanywhere.com/api/patient/recent-appointment-list/`,{
+  fetch(`https://mdzisanislam.pythonanywhere.com/api/patient/recent-appointment-list/`,{
     method:"GET",
     credentials: "include",
     headers: {
@@ -92,7 +92,7 @@ const [cardData,setCardData] = useState([]);
 const handleCardData = (card_id) => {
 
   console.log(card_id);
-  fetch(`https://pmshosen.pythonanywhere.com/api/patient/appointment-list/?doctor_id=${card_id}`,{
+  fetch(`https://mdzisanislam.pythonanywhere.com/api/patient/appointment-list/?doctor_id=${card_id}`,{
     method:"GET",
     credentials: "include",
     headers: {
@@ -123,7 +123,7 @@ console.log(cardData);
 const handleDocPersonalInfo = (_id) => {
 
 
-  fetch(`https://pmshosen.pythonanywhere.com/api/doctor/detail/?id=${_id}`,{
+  fetch(`https://mdzisanislam.pythonanywhere.com/api/doctor/detail/?id=${_id}`,{
     method:"GET",
     credentials: "include",
     headers: {

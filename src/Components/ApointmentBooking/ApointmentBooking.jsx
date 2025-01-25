@@ -36,7 +36,7 @@ const ApointmentBooking = () => {
     
     //   use the token to get new token
       useEffect( () => {
-        fetch(`https://pmshosen.pythonanywhere.com/api/patient/login/refresh/`,{
+        fetch(`https://mdzisanislam.pythonanywhere.com/api/patient/login/refresh/`,{
           method:"POST",
           credentials: "include",
           headers: {
@@ -59,7 +59,7 @@ const ApointmentBooking = () => {
     // use the new token to get the user info
     
     useEffect( () => {
-        fetch(`https://pmshosen.pythonanywhere.com/api/patient/profile/`,{
+        fetch(`https://mdzisanislam.pythonanywhere.com/api/patient/profile/`,{
           method:"GET",
           credentials: "include",
           headers: {
@@ -93,7 +93,7 @@ const ApointmentBooking = () => {
    
 
     useEffect( () => {
-        fetch(`https://pmshosen.pythonanywhere.com/api/patient/appointment-detail/${_id}/`,{
+        fetch(`https://mdzisanislam.pythonanywhere.com/api/patient/appointment-detail/${_id}/`,{
           method:"GET",
           credentials: "include",
           headers: {
@@ -126,7 +126,7 @@ const {doctor_detail,date,day,start_time,end_time,id} = docInfo;
 
 const handlePostApointment = (id) => {
 
-  fetch(`https://pmshosen.pythonanywhere.com/api/patient/login/refresh/`,{
+  fetch(`https://mdzisanislam.pythonanywhere.com/api/patient/login/refresh/`,{
           method:"POST",
           credentials: "include",
           headers: {
@@ -141,7 +141,7 @@ const handlePostApointment = (id) => {
 
       
 
-      fetch(`https://pmshosen.pythonanywhere.com/api/patient/appointment-book/`,{
+      fetch(`https://mdzisanislam.pythonanywhere.com/api/patient/appointment-book/`,{
           method:"POST",
           credentials: "include",
           headers: {

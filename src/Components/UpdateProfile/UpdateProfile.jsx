@@ -90,7 +90,7 @@ const Rtoken = localStorage.getItem('Refresh token');
 
 //   use the token to get new token
   useEffect( () => {
-    fetch(`https://pmshosen.pythonanywhere.com/api/patient/login/refresh/`,{
+    fetch(`https://mdzisanislam.pythonanywhere.com/api/patient/login/refresh/`,{
       method:"POST",
       credentials: "include",
       headers: {
@@ -117,7 +117,7 @@ const Rtoken = localStorage.getItem('Refresh token');
 // use the new token to get the user info
 
 useEffect( () => {
-    fetch(`https://pmshosen.pythonanywhere.com/api/patient/profile/`,{
+    fetch(`https://mdzisanislam.pythonanywhere.com/api/patient/profile/`,{
       method:"GET",
       credentials: "include",
       headers: {
@@ -184,7 +184,7 @@ const handleUpdateData = e => {
 
 
        
-            fetch(`https://pmshosen.pythonanywhere.com/api/patient/login/refresh/`,{
+            fetch(`https://mdzisanislam.pythonanywhere.com/api/patient/login/refresh/`,{
               method:"POST",
               credentials: "include",
               headers: {
@@ -216,7 +216,7 @@ const handleUpdateData = e => {
         
         const Authentication = newtok; // Assuming newtok holds the authentication token
         
-        fetch('https://pmshosen.pythonanywhere.com/api/patient/profile-info-update/', {
+        fetch('https://mdzisanislam.pythonanywhere.com/api/patient/profile-info-update/', {
             method: "PATCH",
             credentials: "include",
             headers: {
